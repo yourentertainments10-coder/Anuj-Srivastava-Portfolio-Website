@@ -3,11 +3,11 @@ export const profile = {
   role: "Software Developer",
   location: "India",
   summary:
-    "I'm a software developer with interests in web development, machine learning, and data analytics. I enjoy building practical applications that solve real-world problems and continuously exploring new technologies.",
-  email: "anuj@example.com",
+    "Building web applications, machine learning solutions, and data-driven products.",
+  email: "anujxsrivastava@gmail.com",
   resumeUrl: "/Anuj_Resume.pdf",
-  githubUrl: "https://github.com/your-username",
-  linkedinUrl: "https://www.linkedin.com/in/your-profile",
+  githubUrl: "https://github.com/yourentertainments10-coder",
+  linkedinUrl: "https://www.linkedin.com/in/anuj-srivastava-20a5b229a/",
 };
 
 
@@ -38,16 +38,24 @@ export const skillGroups = [
     items: ["MySQL", "SQL", "SQLite"],
   },
   {
-    title: "Data & ML",
+    title: "Data Science & ML",
     items: ["Pandas", "NumPy", "Scikit-learn", "Power BI"],
   },
 ];
 
 export const currentlyLearning = [
-  "Node.js",
-  "Express.js",
-  "Machine Learning",
-  "Data Analytics",
+  {
+    title: "Backend Development",
+    detail: "Node.js + Express.js",
+  },
+  {
+    title: "Machine Learning",
+    detail: "Model Development & Deployment",
+  },
+  {
+    title: "Data Analytics",
+    detail: "SQL, Power BI, Visualization",
+  },
 ];
 
 
@@ -56,41 +64,52 @@ export const projects = [
     title: "AI Smart Classroom System",
     tag: "Computer Vision",
     description:
-      "Automates classroom attendance using face recognition concepts, secure access, and clear attendance reporting.",
-    stack: ["Python", "OpenCV", "Flask", "SQLite"],
-    imageLabel: "Attendance dashboard",
-    liveUrl: "#",
-    repoUrl: "#",
+      "Classroom intelligence platform for attendance automation, engagement monitoring, and analytics.",
+    features: [
+      "Face Recognition Attendance",
+      "Student Engagement Monitoring",
+      "Multi-Student Tracking",
+      "Dashboard Analytics",
+    ],
+    stack: ["Python", "OpenCV", "Flask", "MySQL"],
+    imageLabel: "Smart classroom dashboard",
+    //liveUrl: "#",
+    repoUrl: "https://github.com/yourentertainments10-coder/smart-attendance-system",
+    visual: "classroom",
   },
   {
-    title: "Student Management System",
+    title: "Student Faculty Management System",
     tag: "Web App",
     description:
-      "Student & faculty portal with authentication, dashboards, and database-backed records.",
-    stack: ["Flask", "HTML", "CSS", "SQLite"],
-    imageLabel: "Portal screens",
-    liveUrl: "#",
-    repoUrl: "#",
+      "Role-based portal for students and faculty with dashboards, records, and attendance workflows.",
+    features: [
+      "Authentication",
+      "Student Dashboard",
+      "Faculty Dashboard",
+      "Attendance & Records",
+    ],
+    stack: ["Python", "Flask", "MySQL"],
+    imageLabel: "Student faculty system ",
+    //liveUrl: "#",
+    repoUrl: "https://github.com/yourentertainments10-coder/Student_Faculty_System",
+    visual: "student",
   },
   {
-    title: "Chess Game (React)",
+    title: "Chess",
     tag: "React",
     description:
-      "Interactive chess game built with React: responsive UI, move logic, and clean component structure.",
+      "Interactive browser-based chess experience with responsive UI and structured game logic.",
+    features: [
+      "Move Validation",
+      "Interactive UI",
+      "Game Logic",
+      "Responsive Design",
+    ],
     stack: ["React", "JavaScript", "CSS"],
-    imageLabel: "Chess board",
-    liveUrl: "#",
-    repoUrl: "#",
-  },
-  {
-    title: "Portfolio Website",
-    tag: "Web",
-    description:
-      "Personal portfolio built for real-world hiring: projects, skills, certifications, and a fast downloadable resume.",
-    stack: ["React", "Vite", "CSS"],
-    imageLabel: "Portfolio sections",
-    liveUrl: "#",
-    repoUrl: "#",
+    imageLabel: "chess",
+    //liveUrl: "#",
+    repoUrl: "https://github.com/yourentertainments10-coder/Chess",
+    visual: "chess",
   },
 ];
 
@@ -104,16 +123,16 @@ export const githubStats = [
     label: "Technologies",
   },
   {
-    value: "Web",
+    value: "Frontend",
+    label: "Development",
+  },
+  {
+    value: "Backend",
     label: "Development",
   },
   {
     value: "ML",
     label: "Machine Learning",
-  },
-  {
-    value: "Data",
-    label: "Analytics",
   },
 ];
 
@@ -121,18 +140,25 @@ export const githubStats = [
 
 export const experience = [
   {
-    role: "Vice-President & Fundraising Head",
-    company: "Foto-Graphica",
+    role: "Vice-President",
+    company: "Foto-Grafica",
     period: "Leadership Experience",
-    details:
-      "Led event planning and coordination, managed sponsorship outreach, and organized photography events.",
+    details: [
+      "Led event planning and execution",
+      "Coordinated teams across event operations",
+      "Organized photography workshops and competitions",
+    ],
   },
   {
+
     role: "Self-directed Builds",
     company: "Portfolio Projects",
     period: "Ongoing",
-    details:
-      "Developing end-to-end web applications and ML prototypes with clean UX, reliable backends, and data-driven features.",
+    details: [
+      "Developing end-to-end web applications and ML prototypes",
+      "Improving React, Flask, SQL, and deployment fundamentals",
+      "Building projects with clean UX and data-driven features",
+    ],
   },
 ];
 
@@ -141,16 +167,19 @@ export const certifications = [
   {
     name: "Google Data Analytics",
     issuer: "Google",
+    logo: "G",
     credentialUrl: "#",
   },
   {
     name: "IBM Data Science",
     issuer: "IBM",
+    logo: "IBM",
     credentialUrl: "#",
   },
   {
     name: "Tata GenAI Data Analytics",
     issuer: "Tata",
+    logo: "T",
     credentialUrl: "#",
   },
 ];

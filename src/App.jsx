@@ -11,6 +11,8 @@ import {
   Sparkles,
 } from "lucide-react";
 
+import { motion } from "framer-motion";
+
 import {
   certifications,
   currentlyLearning,
@@ -27,7 +29,7 @@ function App() {
     <>
       <header className="site-header">
         <a className="brand" href="#home" aria-label="Anuj home">
-          A
+          AS
         </a>
         <nav aria-label="Primary navigation">
           {navItems.map((item) => (
@@ -39,8 +41,15 @@ function App() {
       </header>
 
       <main>
-        <section id="home" className="hero section-shell">
+        <motion.section
+          id="home"
+          className="hero section-shell"
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
           <div className="hero-copy">
+            <span className="status-badge">{profile.status}</span>
             <h1>{profile.name}</h1>
             <p className="role">{profile.role}</p>
             <p className="summary">{profile.summary}</p>
@@ -50,75 +59,71 @@ function App() {
                 <Download size={18} aria-hidden="true" />
                 Resume
               </a>
-              <a className="button" href={profile.githubUrl} target="_blank" rel="noreferrer">
+              <a
+                className="button"
+                href={profile.githubUrl}
+                target="_blank"
+                rel="noreferrer"
+              >
                 <Github size={18} aria-hidden="true" />
                 GitHub
               </a>
-              <a className="button" href={profile.linkedinUrl} target="_blank" rel="noreferrer">
+              <a
+                className="button"
+                href={profile.linkedinUrl}
+                target="_blank"
+                rel="noreferrer"
+              >
                 <Linkedin size={18} aria-hidden="true" />
                 LinkedIn
               </a>
             </div>
           </div>
-          <div className="hero-media project-collage" aria-label="Project collage">
-            <div className="collage-header">
-              <span>Project Portfolio</span>
-              <Github size={18} aria-hidden="true" />
-            </div>
-            <article className="collage-card classroom">
-              <span>AI Smart Classroom</span>
-              <strong>Face recognition attendance</strong>
-              <div className="mini-bars" aria-hidden="true">
-                <i />
-                <i />
-                <i />
-              </div>
-            </article>
-            <article className="collage-card student">
-              <span>Student Management</span>
-              <strong>Auth, dashboards, records</strong>
-              <div className="mini-table" aria-hidden="true">
-                <i />
-                <i />
-                <i />
-                <i />
-              </div>
-            </article>
-            <article className="collage-card chess">
-              <span>Chess Game</span>
-              <strong>React board and move logic</strong>
-              <div className="mini-board" aria-hidden="true">
-                {Array.from({ length: 16 }).map((_, index) => (
-                  <i key={index} />
-                ))}
-              </div>
-            </article>
+          <div className="hero-media" aria-label="Project collage">
+            <img
+              src="/assets/hero-workspace.png"
+              alt="Project portfolio"
+              className="hero-image"
+            />
           </div>
-        </section>
+        </motion.section>
 
-        <section id="about" className="section-shell two-column">
-          <div>
-            <p className="section-kicker">About</p>
+        <motion.section
+          id="about"
+          className="section-shell about-section"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="section-heading">
             <h2>Developer focused on practical, polished software.</h2>
           </div>
           <div className="section-text">
             <p>
-              I enjoy turning ideas into useful products: clean interfaces,
-              dependable data flows, and code that is easy to keep improving.
-              My current work spans React frontends, Python web apps, data
-              projects, and machine learning prototypes.
+              I build real software products across web development, machine
+              learning, and data analytics. My work combines clean interfaces,
+              reliable backend logic, database-backed workflows, and practical
+              problem solving.
             </p>
             <p>
-              I care about straightforward user flows, maintainable code, and
-              the small details that make a product feel finished.
+              I am focused on internship and entry-level software development
+              opportunities where I can contribute, keep learning, and ship
+              useful applications with React, Python, Flask, SQL, and ML tools.
             </p>
           </div>
-        </section>
+        </motion.section>
 
-        <section id="skills" className="section-shell">
+        <motion.section
+          id="skills"
+          className="section-shell"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
           <div className="section-heading">
-            <p className="section-kicker">Skills</p>
-            <h2>Tools I use to build.</h2>
+            <h2>Technical Skills</h2>
           </div>
           <div className="skill-group-grid">
             {skillGroups.map((group) => (
@@ -132,75 +137,89 @@ function App() {
               </article>
             ))}
           </div>
-        </section>
+        </motion.section>
 
         <section id="learning" className="section-shell two-column learning-section">
           <div>
-            <p className="section-kicker">Currently Learning</p>
-            <h2>What I'm improving right now.</h2>
+            <h2>Current Learning Focus</h2>
           </div>
           <div className="learning-grid">
             {currentlyLearning.map((item, index) => {
-              const icons = [Code2, Database, Sparkles, BookOpen];
+              const icons = [Code2, Sparkles, Database, BookOpen];
               const Icon = icons[index] ?? BookOpen;
               return (
-                <article key={item}>
+                <article key={item.title}>
                   <Icon size={22} aria-hidden="true" />
-                  <h3>{item}</h3>
+                  <div>
+                    <h3>{item.title}</h3>
+                    <p>{item.detail}</p>
+                  </div>
                 </article>
               );
             })}
           </div>
         </section>
 
-        <section id="projects" className="section-shell">
+        <motion.section
+          id="projects"
+          className="section-shell"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
           <div className="section-heading">
-            <p className="section-kicker">Projects</p>
-            <h2>Selected work.</h2>
+            <h2>Selected Projects</h2>
           </div>
           <div className="project-grid">
-            {projects.map((project, index) => (
+            {projects.map((project) => (
               <article className="project-card" key={project.title}>
-                <div className={`project-shot shot-${index + 1}`}>
-                  <span>{project.imageLabel}</span>
-                </div>
+                <ProjectVisual project={project} />
                 <div className="project-body">
                   <div className="project-topline">
                     <span>{project.tag}</span>
-                    <a
-                      href={project.repoUrl}
-                      aria-label={`${project.title} repository`}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      <Github size={18} aria-hidden="true" />
-                    </a>
                   </div>
                   <h3>{project.title}</h3>
                   <p>{project.description}</p>
+                  <ul className="feature-list">
+                    {project.features.map((feature) => (
+                      <li key={feature}>{feature}</li>
+                    ))}
+                  </ul>
                   <div className="stack-list">
                     {project.stack.map((item) => (
                       <span key={item}>{item}</span>
                     ))}
                   </div>
-                  <a
-                    className="text-link"
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    View project <ArrowUpRight size={16} aria-hidden="true" />
-                  </a>
+                  <div className="project-actions">
+                    <a
+                      className="button small"
+                      href={project.repoUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <Github size={16} aria-hidden="true" />
+                      GitHub
+                    </a>
+                    {/* <a
+                      className="button small"
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <ArrowUpRight size={16} aria-hidden="true" />
+                      Live Demo
+                    </a> */}
+                  </div>
                 </div>
               </article>
             ))}
           </div>
-        </section>
+        </motion.section>
 
         <section id="github" className="section-shell github-section">
           <div className="section-heading">
-            <p className="section-kicker">GitHub</p>
-            <h2>Code focus at a glance.</h2>
+            <h2>GitHub</h2>
           </div>
           <div className="github-grid">
             {githubStats.map((item) => (
@@ -210,15 +229,27 @@ function App() {
               </article>
             ))}
           </div>
-          <a className="text-link github-profile-link" href={profile.githubUrl} target="_blank" rel="noreferrer">
-            View GitHub profile <ArrowUpRight size={16} aria-hidden="true" />
+          <a
+            className="button github-profile-link"
+            href={profile.githubUrl}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <Github size={18} aria-hidden="true" />
+            View GitHub Profile
           </a>
         </section>
 
-        <section id="experience" className="section-shell two-column">
+        <motion.section
+          id="experience"
+          className="section-shell two-column"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
           <div>
-            <p className="section-kicker">Experience</p>
-            <h2>Recent focus.</h2>
+            <h2>Leadership & Experience</h2>
           </div>
           <div className="timeline">
             {experience.map((item) => (
@@ -226,37 +257,66 @@ function App() {
                 <p>{item.period}</p>
                 <h3>{item.role}</h3>
                 <span>{item.company}</span>
-                <p>{item.details}</p>
+                <ul className="feature-list">
+                  {item.details.map((detail) => (
+                    <li key={detail}>{detail}</li>
+                  ))}
+                </ul>
               </article>
             ))}
           </div>
-        </section>
+        </motion.section>
 
-        <section id="certifications" className="section-shell">
+        <motion.section
+          id="certifications"
+          className="section-shell"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
           <div className="section-heading">
-            <p className="section-kicker">Certifications</p>
-            <h2>Credentials and achievements.</h2>
+            <h2>Certifications</h2>
           </div>
           <div className="cert-grid">
             {certifications.map((item) => (
               <article key={item.name}>
-                <span>Issued by {item.issuer}</span>
+                <div className="cert-topline">
+                  <strong
+                    className={`issuer-logo ${item.issuer.toLowerCase()}`}
+                    aria-hidden="true"
+                  >
+                    {item.logo}
+                  </strong>
+                  <span>Issued by {item.issuer}</span>
+                </div>
                 <h3>{item.name}</h3>
-                <a className="text-link" href={item.credentialUrl} target="_blank" rel="noreferrer">
+                <a
+                  className="text-link"
+                  href={item.credentialUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   Verify credential <ArrowUpRight size={16} aria-hidden="true" />
                 </a>
               </article>
             ))}
           </div>
-        </section>
+        </motion.section>
 
-        <section id="contact" className="section-shell contact">
+        <motion.section
+          id="contact"
+          className="section-shell contact"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
           <div>
-            <p className="section-kicker">Contact</p>
             <h2>Let's build something useful.</h2>
             <p>
-              Open to internships, freelance work, collaboration, and product
-              ideas that need a dependable developer.
+              Open to internships, software development opportunities,
+              collaborations, and innovative projects.
             </p>
           </div>
           <div className="contact-actions">
@@ -264,11 +324,21 @@ function App() {
               <Mail size={18} aria-hidden="true" />
               Email
             </a>
-            <a className="button" href={profile.linkedinUrl} target="_blank" rel="noreferrer">
+            <a
+              className="button"
+              href={profile.linkedinUrl}
+              target="_blank"
+              rel="noreferrer"
+            >
               <Linkedin size={18} aria-hidden="true" />
               LinkedIn
             </a>
-            <a className="button" href={profile.githubUrl} target="_blank" rel="noreferrer">
+            <a
+              className="button"
+              href={profile.githubUrl}
+              target="_blank"
+              rel="noreferrer"
+            >
               <Github size={18} aria-hidden="true" />
               GitHub
             </a>
@@ -277,10 +347,39 @@ function App() {
               Resume
             </a>
           </div>
-        </section>
+        </motion.section>
       </main>
+
+      <footer className="site-footer">
+        <p>© 2026 Anuj Srivastava</p>
+        <span>Software Developer</span>
+        <div>
+          <a href={profile.githubUrl} target="_blank" rel="noreferrer">
+            GitHub
+          </a>
+          <a href={profile.linkedinUrl} target="_blank" rel="noreferrer">
+            LinkedIn
+          </a>
+          <a href={`mailto:${profile.email}`}>Email</a>
+        </div>
+      </footer>
     </>
   );
 }
 
+function ProjectVisual({ project }) {
+  const projectImages = {
+    classroom: "/assets/hero-workspace.png",
+    student: "/assets/hero-workspace.png",
+    chess: "/assets/hero-workspace.png",
+  };
+
+  return (
+    <div className="project-shot" aria-label={project.imageLabel}>
+      <img src={projectImages[project.visual]} alt={project.title} />
+    </div>
+  );
+}
+
 export default App;
+
