@@ -15,38 +15,39 @@ export const profile = {
 export const navItems = [
   "About",
   "Skills",
+  "Learning",
   "Projects",
+  "GitHub",
   "Experience",
   "Certifications",
   "Contact",
 ];
 
 
-export const skills = [
-  // Languages
-  "Python",
-  "JavaScript",
-  "SQL",
+export const skillGroups = [
+  {
+    title: "Frontend",
+    items: ["React", "JavaScript", "HTML", "CSS"],
+  },
+  {
+    title: "Backend",
+    items: ["Python", "Flask", "Node.js", "Express.js", "REST APIs"],
+  },
+  {
+    title: "Database",
+    items: ["MySQL", "SQL", "SQLite"],
+  },
+  {
+    title: "Data & ML",
+    items: ["Pandas", "NumPy", "Scikit-learn", "Power BI"],
+  },
+];
 
-  // Frontend
-  "React",
-  "HTML",
-  "CSS",
-
-  // Backend
-  "Flask",
+export const currentlyLearning = [
   "Node.js",
   "Express.js",
-  "REST APIs",
-
-  // Database
-  "MySQL",
-
-  // Data & ML
-  "Pandas",
-  "NumPy",
-  "Scikit-learn",
-  "Power BI",
+  "Machine Learning",
+  "Data Analytics",
 ];
 
 
@@ -93,6 +94,29 @@ export const projects = [
   },
 ];
 
+export const githubStats = [
+  {
+    value: "10+",
+    label: "Projects",
+  },
+  {
+    value: "15+",
+    label: "Technologies",
+  },
+  {
+    value: "Web",
+    label: "Development",
+  },
+  {
+    value: "ML",
+    label: "Machine Learning",
+  },
+  {
+    value: "Data",
+    label: "Analytics",
+  },
+];
+
 
 
 export const experience = [
@@ -114,8 +138,19 @@ export const experience = [
 
 
 export const certifications = [
-  "Google Data Analytics",
-  "IBM Data Science",
-  "Tata GenAI Data Analytics",
+  {
+    name: "Google Data Analytics",
+    issuer: "Google",
+    credentialUrl: "#",
+  },
+  {
+    name: "IBM Data Science",
+    issuer: "IBM",
+    credentialUrl: "#",
+  },
+  {
+    name: "Tata GenAI Data Analytics",
+    issuer: "Tata",
+    credentialUrl: "#",
+  },
 ];
-

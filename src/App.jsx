@@ -1,18 +1,25 @@
 import {
   ArrowUpRight,
+  BookOpen,
+  Code2,
+  Database,
   Download,
+  FileText,
   Github,
   Linkedin,
   Mail,
+  Sparkles,
 } from "lucide-react";
 
 import {
   certifications,
+  currentlyLearning,
   experience,
+  githubStats,
   navItems,
   profile,
   projects,
-  skills,
+  skillGroups,
 } from "./portfolioData.js";
 
 function App() {
@@ -53,8 +60,39 @@ function App() {
               </a>
             </div>
           </div>
-          <div className="hero-media" aria-label="Developer workspace visual">
-            <img src="/assets/hero-workspace.png" alt="" />
+          <div className="hero-media project-collage" aria-label="Project collage">
+            <div className="collage-header">
+              <span>Project Portfolio</span>
+              <Github size={18} aria-hidden="true" />
+            </div>
+            <article className="collage-card classroom">
+              <span>AI Smart Classroom</span>
+              <strong>Face recognition attendance</strong>
+              <div className="mini-bars" aria-hidden="true">
+                <i />
+                <i />
+                <i />
+              </div>
+            </article>
+            <article className="collage-card student">
+              <span>Student Management</span>
+              <strong>Auth, dashboards, records</strong>
+              <div className="mini-table" aria-hidden="true">
+                <i />
+                <i />
+                <i />
+                <i />
+              </div>
+            </article>
+            <article className="collage-card chess">
+              <span>Chess Game</span>
+              <strong>React board and move logic</strong>
+              <div className="mini-board" aria-hidden="true">
+                {Array.from({ length: 16 }).map((_, index) => (
+                  <i key={index} />
+                ))}
+              </div>
+            </article>
           </div>
         </section>
 
@@ -82,10 +120,36 @@ function App() {
             <p className="section-kicker">Skills</p>
             <h2>Tools I use to build.</h2>
           </div>
-          <div className="skill-grid">
-            {skills.map((skill) => (
-              <span key={skill}>{skill}</span>
+          <div className="skill-group-grid">
+            {skillGroups.map((group) => (
+              <article className="skill-group" key={group.title}>
+                <h3>{group.title}</h3>
+                <div className="skill-list">
+                  {group.items.map((skill) => (
+                    <span key={skill}>{skill}</span>
+                  ))}
+                </div>
+              </article>
             ))}
+          </div>
+        </section>
+
+        <section id="learning" className="section-shell two-column learning-section">
+          <div>
+            <p className="section-kicker">Currently Learning</p>
+            <h2>What I'm improving right now.</h2>
+          </div>
+          <div className="learning-grid">
+            {currentlyLearning.map((item, index) => {
+              const icons = [Code2, Database, Sparkles, BookOpen];
+              const Icon = icons[index] ?? BookOpen;
+              return (
+                <article key={item}>
+                  <Icon size={22} aria-hidden="true" />
+                  <h3>{item}</h3>
+                </article>
+              );
+            })}
           </div>
         </section>
 
@@ -133,6 +197,23 @@ function App() {
           </div>
         </section>
 
+        <section id="github" className="section-shell github-section">
+          <div className="section-heading">
+            <p className="section-kicker">GitHub</p>
+            <h2>Code focus at a glance.</h2>
+          </div>
+          <div className="github-grid">
+            {githubStats.map((item) => (
+              <article key={`${item.value}-${item.label}`}>
+                <strong>{item.value}</strong>
+                <span>{item.label}</span>
+              </article>
+            ))}
+          </div>
+          <a className="text-link github-profile-link" href={profile.githubUrl} target="_blank" rel="noreferrer">
+            View GitHub profile <ArrowUpRight size={16} aria-hidden="true" />
+          </a>
+        </section>
 
         <section id="experience" className="section-shell two-column">
           <div>
@@ -158,9 +239,12 @@ function App() {
           </div>
           <div className="cert-grid">
             {certifications.map((item) => (
-              <article key={item}>
-                <span>Verified item</span>
-                <h3>{item}</h3>
+              <article key={item.name}>
+                <span>Issued by {item.issuer}</span>
+                <h3>{item.name}</h3>
+                <a className="text-link" href={item.credentialUrl} target="_blank" rel="noreferrer">
+                  Verify credential <ArrowUpRight size={16} aria-hidden="true" />
+                </a>
               </article>
             ))}
           </div>
@@ -175,10 +259,24 @@ function App() {
               ideas that need a dependable developer.
             </p>
           </div>
-          <a className="button primary" href={`mailto:${profile.email}`}>
-            <Mail size={18} aria-hidden="true" />
-            {profile.email}
-          </a>
+          <div className="contact-actions">
+            <a className="button primary" href={`mailto:${profile.email}`}>
+              <Mail size={18} aria-hidden="true" />
+              Email
+            </a>
+            <a className="button" href={profile.linkedinUrl} target="_blank" rel="noreferrer">
+              <Linkedin size={18} aria-hidden="true" />
+              LinkedIn
+            </a>
+            <a className="button" href={profile.githubUrl} target="_blank" rel="noreferrer">
+              <Github size={18} aria-hidden="true" />
+              GitHub
+            </a>
+            <a className="button" href={profile.resumeUrl} download>
+              <FileText size={18} aria-hidden="true" />
+              Resume
+            </a>
+          </div>
         </section>
       </main>
     </>
