@@ -81,7 +81,7 @@ function App() {
           </div>
           <div className="hero-media" aria-label="Project collage">
             <img
-              src="/assets/hero-workspace.png"
+              src="/assets/porfolio.png"
               alt="Project portfolio"
               className="hero-image"
             />
