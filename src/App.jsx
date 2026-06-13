@@ -101,15 +101,15 @@ function App() {
           </div>
           <div className="section-text">
             <p>
-              I build real software products across web development, machine
-              learning, and data analytics. My work combines clean interfaces,
-              reliable backend logic, database-backed workflows, and practical
-              problem solving.
+             I enjoy building web applications and data-driven solutions that solve 
+             real-world problems. Whether it's developing full-stack applications, 
+             working with machine learning models, or analyzing data, 
+             I focus on creating practical, reliable, and user-friendly projects.
             </p>
             <p>
-              I am focused on internship and entry-level software development
-              opportunities where I can contribute, keep learning, and ship
-              useful applications with React, Python, Flask, SQL, and ML tools.
+              I am currently seeking internship and entry-level opportunities in 
+              software development where I can apply my skills, learn from experienced 
+              professionals, and contribute to meaningful projects.
             </p>
           </div>
         </motion.section>
@@ -369,9 +369,9 @@ function App() {
 
 function ProjectVisual({ project }) {
   const projectImages = {
-    classroom: "/assets/hero-workspace.png",
-    student: "/assets/hero-workspace.png",
-    chess: "/assets/hero-workspace.png",
+    classroom: "/assets/smart classroom.png",
+    student: "/assets/student_faculty.png",
+    chess: "/assets/Chess.png",
   };
 
   return (
