@@ -46,6 +46,25 @@
   color-scheme: light;
 }
 
+/* ==========================================================================
+   Global scale
+   The design was drawn a little large: at 100% browser zoom it read as
+   over-magnified on desktop. This renders it at the size it has at 80%
+   browser zoom, without the visitor having to touch their zoom control.
+
+   Change the 0.8 below to rescale everything at once (0.85 = larger,
+   0.75 = smaller). Deliberately NOT applied under 1024px: phones and
+   tablets are already sized correctly, and shrinking body text to ~12.8px
+   there would hurt readability. Browser zoom still compounds on top of
+   this, so anyone who needs to enlarge the page can.
+   ========================================================================== */
+
+@media (min-width: 1024px) {
+  :root {
+    zoom: 0.8;
+  }
+}
+
 * {
   box-sizing: border-box;
 }
