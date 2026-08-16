@@ -305,12 +305,19 @@ p {
    ========================================================================== */
 
 .hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.82fr);
+  align-items: center;
+  gap: clamp(32px, 5vw, 72px);
+  min-height: calc(86svh - 74px);
+  padding-top: 40px;
+}
+
+.hero-copy {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: center;
-  min-height: calc(86svh - 74px);
-  padding-top: 40px;
+  min-width: 0;
 }
 
 .status-badge {
@@ -336,20 +343,53 @@ p {
   box-shadow: 0 0 0 3px var(--accent-dim);
 }
 
-.hero-role {
-  margin-bottom: 22px;
-  color: var(--muted);
-  font-family: var(--font-mono);
-  font-size: 0.92rem;
-  letter-spacing: 0.01em;
+/* No card frame: the portrait dissolves into the page via a soft radial
+   mask, and is desaturated/darkened so a bright outdoor shot sits inside a
+   near-black palette. Colour returns on hover. */
+.hero-photo {
+  position: relative;
+  justify-self: end;
+  width: min(100%, 400px);
+  -webkit-mask-image: radial-gradient(
+    ellipse 80% 78% at 52% 42%,
+    #000 48%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  mask-image: radial-gradient(
+    ellipse 80% 78% at 52% 42%,
+    #000 48%,
+    rgba(0, 0, 0, 0) 100%
+  );
 }
 
-.summary {
-  max-width: 640px;
-  color: var(--ink);
-  font-size: clamp(1.08rem, 2vw, 1.28rem);
-  line-height: 1.6;
-  opacity: 0.88;
+.hero-photo img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  filter: grayscale(0.5) contrast(1.06) brightness(0.8);
+  transition: filter 420ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-photo:hover img {
+  filter: grayscale(0) contrast(1) brightness(0.96);
+}
+
+/* Accent wash so the photo belongs to the site palette. */
+.hero-photo::after {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(205deg, var(--accent-dim), transparent 58%);
+  content: "";
+  pointer-events: none;
+}
+
+/* Light theme needs almost none of the darkening. */
+:root[data-theme="light"] .hero-photo img {
+  filter: grayscale(0.3) contrast(1.02) brightness(1);
+}
+
+:root[data-theme="light"] .hero-photo:hover img {
+  filter: grayscale(0) contrast(1) brightness(1);
 }
 
 /* ==========================================================================
@@ -971,6 +1011,16 @@ p {
    ========================================================================== */
 
 @media (max-width: 940px) {
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .hero-photo {
+    justify-self: start;
+    width: min(100%, 300px);
+  }
+
   .project-grid,
   .skill-group-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1052,6 +1102,10 @@ p {
     min-height: auto;
     padding-top: 28px;
     padding-bottom: 40px;
+  }
+
+  .hero-photo {
+    width: min(100%, 240px);
   }
 
   .project-grid,

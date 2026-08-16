@@ -259,6 +259,7 @@ function App() {
           initial="hidden"
           animate="visible"
         >
+          <div className="hero-copy">
           <span className="status-badge">
             <span className="status-dot" aria-hidden="true" />
             {profile.availability}
@@ -308,6 +309,19 @@ function App() {
               {profile.email}
             </Button>
           </motion.div>
+          </div>
+
+          {profile.photo && (
+            <motion.div
+              className="hero-photo"
+              variants={anim.fadeIn}
+              initial="hidden"
+              animate="visible"
+              transition={{ delay: 0.25 }}
+            >
+              <FadeImage src={profile.photo} alt={profile.photoAlt} eager />
+            </motion.div>
+          )}
         </motion.section>
 
         <motion.section

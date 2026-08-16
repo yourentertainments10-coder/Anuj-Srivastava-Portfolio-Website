@@ -9,11 +9,16 @@ export const profile = {
   degreeLine: "BCA '26",
   email: "anujxsrivastava@gmail.com",
   resumeUrl: "/Anuj_Resume.pdf",
+  // Portrait shown in the hero. Use it EITHER here or in `about.photo`
+  // below -- never both, or the same face appears twice on one page.
+  photo: "/assets/anuj.jpeg",
+  photoAlt: "Anuj Srivastava",
   githubUrl: "https://github.com/yourentertainments10-coder",
   linkedinUrl: "https://www.linkedin.com/in/anuj-srivastava-20a5b229a/",
 };
 
 export const navItems = ["Projects", "Skills", "Experience", "About", "Contact"];
+
 
 /*
  * PROJECTS
@@ -257,6 +262,8 @@ export const certifications = [
  */
 export const about = {
   heading: "About",
+  // Null on purpose: the portrait is in the hero. Set a path here only if
+  // you remove profile.photo, otherwise the same photo appears twice.
   photo: null,
   photoAlt: "Anuj Srivastava",
   content: [
