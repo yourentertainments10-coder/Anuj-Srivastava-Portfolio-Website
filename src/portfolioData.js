@@ -60,23 +60,9 @@ export const projects = [
     oneLiner:
       "WhatsApp- and email-driven procurement workflow for vendor stock, customer orders, and purchase processing.",
     story:
-      "Vendor stock lists, customer orders, and invoices arrive as photos, PDFs, and messages over WhatsApp and Gmail. I built the backend workflow that parses and validates incoming data, stores it in PostgreSQL, allocates orders against vendor stock, and supports purchase-order and invoice workflows. The core procurement and vendor-order features are in daily use by the company; automated vendor bidding remains under validation and is not presented as complete.",
+      "Built procurement workflows for vendor stock updates, customer order intake, OCR-assisted order parsing, and purchase-order preparation. Automated vendor bidding is in testing.",
     stack: ["Python", "FastAPI", "React", "PostgreSQL", "WhatsApp API", "Gmail API", "OCR"],
     media: { type: "image", src: "/assets/procurehub.svg" },
-    repoUrl: null,
-    liveUrl: null,
-  },
-  {
-    featured: false,
-    title: "OpsFlow",
-    tag: "Internal Platform",
-    note: "Company project — code private",
-    oneLiner:
-      "Sales pipeline and workflow automation platform for an auto-accessories retailer.",
-    story:
-      "Leads lived in personal WhatsApp chats, tasks were verbal, and nothing was tracked. OpsFlow gives six roles a single system: a kanban lead pipeline with round-robin auto-assignment, recurring tasks and reminders, a notice board, and a form builder whose public share links turn a customer submission straight into an assigned lead and a follow-up task.",
-    stack: ["Python", "Django REST", "React", "PostgreSQL", "JWT", "Claude API"],
-    media: { type: "image", src: "/assets/opsflow.svg" },
     repoUrl: null,
     liveUrl: null,
   },
@@ -111,6 +97,30 @@ export const projects = [
   },
   {
     featured: false,
+    title: "Chess Game / Chess Engine",
+    tag: "Game Logic",
+    note: null,
+    oneLiner:
+      "Browser chess interface with move validation and game-state logic implemented from scratch, without a chess library.",
+    stack: ["React", "JavaScript", "CSS"],
+    repoUrl: "https://github.com/yourentertainments10-coder/Chess",
+  },
+  {
+    featured: false,
+    title: "OpsFlow",
+    tag: "Internal Platform",
+    note: "Company project — code private",
+    oneLiner:
+      "Sales pipeline and workflow automation platform for an auto-accessories retailer.",
+    story:
+      "Leads lived in personal WhatsApp chats, tasks were verbal, and nothing was tracked. OpsFlow gives six roles a single system: a kanban lead pipeline with round-robin auto-assignment, recurring tasks and reminders, a notice board, and a form builder whose public share links turn a customer submission straight into an assigned lead and a follow-up task.",
+    stack: ["Python", "Django REST", "React", "PostgreSQL", "JWT", "Claude API"],
+    media: { type: "image", src: "/assets/opsflow.svg" },
+    repoUrl: null,
+    liveUrl: null,
+  },
+  {
+    featured: false,
     title: "WhatsApp Group Access Audit",
     tag: "Security Tooling",
     note: "Company project — code private",
@@ -139,16 +149,6 @@ export const projects = [
     stack: ["Python", "Flask", "MySQL"],
     repoUrl:
       "https://github.com/yourentertainments10-coder/Student_Faculty_System",
-  },
-  {
-    featured: false,
-    title: "Chess Game / Chess Engine",
-    tag: "Game Logic",
-    note: null,
-    oneLiner:
-      "Browser chess interface with move validation and game-state logic implemented from scratch, without a chess library.",
-    stack: ["React", "JavaScript", "CSS"],
-    repoUrl: "https://github.com/yourentertainments10-coder/Chess",
   },
   {
     featured: false,
@@ -194,36 +194,86 @@ export const projects = [
 export const skillGroups = [
   {
     title: "Programming",
-    items: ["Python", "SQL"],
+    items: ["Python", "JavaScript", "SQL"],
   },
   {
     title: "Backend",
-    items: ["FastAPI", "Django REST", "Flask", "Node.js / Express"],
+    items: [
+      "Node.js",
+      "Express.js",
+      "FastAPI",
+      "Flask",
+      "Django / Django REST",
+      "REST API integration",
+      "API authentication & webhooks",
+    ],
+  },
+  {
+    title: "Workflow Automation",
+    items: [
+      "WhatsApp Business Cloud API",
+      "Customer & vendor messaging",
+      "Order-processing workflows",
+      "Purchase-order preparation",
+      "OCR-assisted processing",
+      "Data extraction & normalization",
+      "Spreadsheet imports",
+      "Validation & deduplication",
+      "Conversation-state handling",
+    ],
   },
   {
     title: "AI / ML",
-    items: ["OpenCV", "YOLOv8", "MediaPipe", "Scikit-learn"],
+    items: [
+      "OpenCV",
+      "YOLOv8 / Ultralytics",
+      "MediaPipe",
+      "Face recognition",
+      "Computer vision",
+      "Object & engagement detection",
+      "Scikit-learn",
+    ],
+  },
+  {
+    title: "Data Engineering & Analytics",
+    items: [
+      "Pandas",
+      "NumPy",
+      "Data cleaning & transformation",
+      "Relational database design",
+      "SQL analytics",
+      "CSV/XLSX processing",
+      "Data validation & quality checks",
+      "Automated reports",
+      "Alembic migrations",
+    ],
   },
   {
     title: "Databases",
     items: ["PostgreSQL", "MySQL", "SQLite"],
   },
   {
-    title: "Data Analytics",
-    items: ["Pandas", "Power BI"],
-  },
-  {
     title: "Frontend",
-    items: ["React", "JavaScript", "HTML & CSS"],
+    items: ["React", "HTML", "CSS", "Vite", "Responsive UI development"],
   },
   {
-    title: "Tools & Automation",
+    title: "Video & Media Automation",
+    items: [
+      "FFmpeg",
+      "librosa",
+      "Audio analysis & beat detection",
+      "Beat-aligned editing",
+      "Automated video rendering",
+    ],
+  },
+  {
+    title: "Tools & Deployment",
     items: [
       "Git & GitHub",
-      "WhatsApp Cloud API",
-      "Gmail API",
-      "Claude API",
-      "FFmpeg",
+      "Docker / Compose",
+      "Cloudflare",
+      "Vercel",
+      "HTTPS & webhook deployment",
     ],
   },
 ];
@@ -236,7 +286,7 @@ export const experience = [
     details: [
       "Built and tested internal automation across company portals and operational workflows, including backend integrations and database-backed processes.",
       "Developed ProcureHub/AutoFlow workflows for WhatsApp stock updates, customer order intake, OCR-assisted photo extraction, vendor responses, purchase orders, and PostgreSQL integration.",
-      "Worked on deployment and debugging of the implemented workflows while keeping incomplete automation separate from production-ready features.",
+      "Tested, debugged, and supported deployment of the implemented workflows; automated vendor bidding remained in testing.",
     ],
   },
   {
