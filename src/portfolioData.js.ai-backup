@@ -1,0 +1,612 @@
+export const profile = {
+  name: "Anuj Srivastava",
+  handle: "anuj",
+  role: "Systems & Full-Stack Engineering",
+  degreeLine: "BCA '26",
+  location: "Delhi, India",
+  coordinates: "28.6139° N, 77.2090° E",
+  timezone: "UTC+05:30",
+  availability: "Available for Software Roles & Internships",
+  email: "anujxsrivastava@gmail.com",
+  resumeUrl: "/Anuj_Resume.pdf",
+  photo: "/assets/anuj.jpeg",
+  photoAlt: "Anuj Srivastava",
+  githubUrl: "https://github.com/anujxsrivastava",
+  linkedinUrl: "https://linkedin.com/in/anuj-srivastava",
+};
+
+export const navItems = [
+  "Work",
+  "Case Studies",
+  "Architecture",
+  "Capabilities",
+  "Experience",
+  "Contact",
+];
+
+export const systemInfo = [
+  { label: "BCA", value: "'26 CANDIDATE" },
+  { label: "LOC", value: "DELHI [28.6139° N, 77.2090° E]" },
+  { label: "ROLE", value: "SDE / FULL-STACK" },
+  { label: "TZ", value: "+05:30" },
+];
+
+export const heroBio =
+  "I build software that turns complex, messy problems into useful, production-tested systems. Practical end-to-end architectures spanning full-stack development, business process automation, data normalization pipelines, and applied AI. Currently shipping daily production workflows for auto-parts logistics, sports telemetry pipelines, and internal tools using Python, React, PostgreSQL, and FastAPI.";
+
+export const heroActions = {
+  resumeText: "Resume",
+  email: "anujxsrivastava@gmail.com",
+  githubUrl: "https://github.com/anujxsrivastava",
+  linkedinUrl: "https://linkedin.com/in/anuj-srivastava",
+};
+
+export const quickMetrics = [
+  {
+    label: "Production Ingestion",
+    value: "15k+",
+    sub: "placings normalized",
+  },
+  {
+    label: "Production Schema",
+    value: "24",
+    sub: "PostgreSQL tables",
+  },
+  {
+    label: "Test Suite",
+    value: "133+",
+    sub: "API tests passing",
+  },
+  {
+    label: "Deployment",
+    value: "Daily",
+    sub: "active ops teams",
+  },
+];
+
+export const pipelineSteps = [
+  {
+    icon: "cloud_download",
+    label: "INGESTION MATRIX",
+    detail: "PDF / OCR / WA / Gmail",
+  },
+  {
+    icon: "filter_alt",
+    label: "VALIDATION & NORMALIZER",
+    detail: "Pydantic & Custom Rules",
+  },
+  {
+    icon: "database",
+    label: "POSTGRESQL STATE ENGINE",
+    detail: "Indexed Foreign Keys",
+  },
+  {
+    icon: "dashboard",
+    label: "OPERATIONAL REACT CLIENT",
+    detail: "Responsive UI",
+  },
+];
+
+export const filterCategories = [
+  { id: "all", label: "All" },
+  { id: "automation", label: "Workflows & Ops" },
+  { id: "data", label: "Data & Vision" },
+  { id: "algorithms", label: "Core Algorithms" },
+];
+
+export const caseStudies = [
+  {
+    id: "researchflow",
+    title: "ResearchFlow",
+    category: "data",
+    featured: true,
+    layout: "detailed-metrics",
+    badge: {
+      text: "CASE STUDY 01",
+      type: "primary",
+    },
+    versionText: "v1.4.0-STABLE",
+    statusBadge: {
+      text: "0% MISMATCH",
+      type: "mismatch",
+    },
+    headline:
+      "Competition-agnostic sports research platform with zero-mismatch data reconciliation",
+    challenge:
+      "Sports competition data arrives fragmented across disparate historical archives, irregular event formats, conflicting time-formats, and divergent scoring protocols. Discrepancies between historical medal rosters and modern records cause calculation drift.",
+    solution:
+      "Designed an ingestion and analytical platform initially running on Asian Games historical datasets. Structured with strict schema validation pipelines that enforce entity deduplication and normalize multi-stage qualifying records into cohesive event-level queries.",
+    topologyIntro: "// High-Throughput Processing Architecture",
+    topologyNote: "Canonical Parsing & Tokenization",
+    topology: [
+      { step: "INGEST", label: "Raw Event Feeds" },
+      { step: "VALIDATE", label: "Pydantic Schemas" },
+      { step: "PERSIST", label: "Normalized Postgres" },
+      { step: "QUERY", label: "FastAPI Aggregates" },
+    ],
+    stack: [
+      "PostgreSQL",
+      "Python",
+      "FastAPI",
+      "React",
+      "PyTest",
+      "Automated Testing",
+    ],
+    metrics: [
+      { value: "1,568", label: "Placings Processed", sub: "Historical athlete rows" },
+      { value: "469", label: "Distinct Events", sub: "Across athletics & team" },
+      { value: "0.00", label: "Reconciliation Drift", sub: "Zero mismatch in runs" },
+      { value: "12ms", label: "Query Latency", sub: "Indexed multi-joins" },
+    ],
+    metricsHeader: "VERIFICATION METRICS",
+    metricsBadge: "AUDITED & BENCHMARKED",
+    terminalOutput: [
+      { text: "// CLI Verification Suite: test_integrity.py", className: "comment" },
+      { text: "PASS: test_cross_roster_integrity() ... OK [1568/1568]", className: "secondary" },
+      { text: "PASS: test_medal_aggregate_sum() ....... OK [Delta=0.000]", className: "secondary" },
+      { text: "SUCCESS: 12 tests passed in 0.42s", className: "primary" },
+    ],
+    terminalNote: "CLI Verification Suite: test_integrity.py",
+    dbInfo: "PostgreSQL 16 + GIN Indexes",
+    repoUrl: "https://github.com/anujxsrivastava/ResearchFlow",
+    repoLinkText: "Explore Repo",
+  },
+  {
+    id: "procurehub",
+    title: "ProcureHub",
+    category: "automation",
+    featured: true,
+    layout: "detailed-pipeline",
+    badge: {
+      text: "CASE STUDY 02",
+      type: "primary-container",
+    },
+    statusBadge: {
+      text: "LIVE PRODUCTION (DAILY)",
+      type: "live",
+    },
+    liveLabel: "CarTrends Delhi",
+    headline:
+      "ProcureHub: Multi-channel procurement & vendor order automation engine",
+    challenge:
+      "CarTrends, an auto-parts enterprise in Delhi, managed incoming parts availability, fluctuating prices, and invoices sent as blurry photos, PDFs, and text snippets over WhatsApp and Gmail. Staff spent 4+ hours daily cross-referencing paper inventory.",
+    solution:
+      "Developed an end-to-end event-driven orchestration system. Incoming documents are parsed via OCR and LLM tokenizers, matched against a canonical catalog of 14,000+ auto parts, and automatically converted to verified purchase orders with inventory allocation.",
+    statusAudit:
+      "Core OCR & vendor order processing deployed and currently live in daily operations. Automated vendor bidding protocol currently undergoing test suite validation.",
+    pipelineTrace: [
+      { label: "[IN] WhatsApp Cloud Webhook", status: "200 OK" },
+      { label: "[PARSE] Multi-modal OCR / PDF", status: "Processing" },
+      { label: "[MATCH] Canonical SKU Resolver", status: "Matched" },
+      { label: "[OUT] Live PO & Allocation", status: "Committed" },
+    ],
+    stack: [
+      "Python",
+      "FastAPI",
+      "Django REST",
+      "PostgreSQL",
+      "Docker Compose",
+      "WhatsApp Cloud API",
+    ],
+    metrics: [
+      { value: "48", label: "API Endpoints", sub: "" },
+      { value: "24", label: "DB Tables", sub: "" },
+      { value: "Live", label: "Daily Usage", sub: "" },
+    ],
+    metricsHeader: "PRODUCTION RUNTIME STATS",
+    metricsBadge: "LIVE ENGINE",
+    client: "CarTrends (Delhi Central)",
+    repoUrl: "https://github.com/anujxsrivastava/procure-hub",
+    repoLinkText: "Explore Repo",
+  },
+  {
+    id: "beatflash",
+    title: "Beat Flash",
+    category: "data",
+    featured: false,
+    layout: "card-features",
+    badge: {
+      text: "PROOF OF CONCEPT",
+      type: "primary",
+    },
+    categoryBadge: {
+      text: "AUDIO / VIDEO PIPELINE",
+      type: "tertiary-text",
+    },
+    headline: "Beat Flash: Automated Beat-Synchronized Media Pipeline",
+    description:
+      "Programmatic media rendering pipeline generating music-synchronized video edits from raw camera footage. Employs librosa for onset and tempo detection, computing exact beat timestamps, and delegates keyframe cutting directly to an automated FFmpeg filtergraph.",
+    features: [
+      "Audio Onset Detection: Sub-10ms precision",
+      "Automated FFmpeg Concat & Transitions",
+      "Tested across synthetic metronomes & complex polyrhythms",
+    ],
+    stack: ["Python", "librosa", "FFmpeg", "NumPy"],
+    repoUrl: "https://github.com/anujxsrivastava/beat-flash",
+    repoLinkText: "Code",
+  },
+  {
+    id: "smartclassroom",
+    title: "AI Smart Classroom",
+    category: "data",
+    featured: false,
+    layout: "card-grid",
+    badge: {
+      text: "EDGE COMPUTER VISION",
+      type: "primary",
+    },
+    categoryBadge: {
+      text: "CAPSTONE PROJECT",
+      type: "tertiary-text",
+    },
+    headline: "AI Smart Classroom: Real-Time Attendance & Engagement",
+    description:
+      "Real-time multi-subject face detection and engagement monitoring operating from a single, uncalibrated web camera feed. Combines YOLOv8 head bounding with OpenCV embeddings to maintain track consistency across student occlusions, exports CSV rosters, and charts lecture engagement curves.",
+    featureGrid: [
+      { label: "Sensor Req", value: "1 Camera (No Sensors)" },
+      { label: "Inference", value: "Real-Time Concurrent" },
+    ],
+    stack: ["Python", "YOLOv8", "OpenCV", "Flask", "MySQL"],
+    media: { type: "image", src: "/assets/smart classroom.png" },
+    repoUrl: "https://github.com/anujxsrivastava/smart-classroom",
+    repoLinkText: "Code",
+  },
+  {
+    id: "opsflow",
+    title: "OpsFlow",
+    category: "automation",
+    featured: false,
+    layout: "card-grid",
+    badge: {
+      text: "INTERNAL OPERATIONS",
+      type: "primary-container",
+    },
+    categoryBadge: {
+      text: "COMPANY PROJECT",
+      type: "tertiary-text",
+    },
+    headline: "OpsFlow: Operations Pipeline & Role-Based Workflow",
+    description:
+      "Consolidated 6 separate roles at CarTrends from manual WhatsApp chats and spreadsheets into an authoritative operational workflow. Includes round-robin lead allocation, automated payment reminder tasks, dynamic customer intake forms, and an integrated Claude API summary agent.",
+    featureGrid: [
+      { value: "133", label: "API Tests" },
+      { value: "6", label: "Roles / RBAC" },
+      { value: "9", label: "Modules" },
+    ],
+    stack: ["Django REST", "React", "PostgreSQL", "Claude API"],
+    repoUrl: "https://github.com/anujxsrivastava/opsflow",
+    repoLinkText: "Code",
+  },
+  {
+    id: "chess",
+    title: "Chess Engine",
+    category: "algorithms",
+    featured: false,
+    layout: "card-features",
+    badge: {
+      text: "STATE MACHINE ENGINE",
+      type: "primary",
+    },
+    categoryBadge: {
+      text: "INTERACTIVE REACT",
+      type: "tertiary-text",
+    },
+    headline: "Deterministic Chess Engine & Move Generator",
+    description:
+      "Deterministic React chess game built from scratch without external engine libraries. Implements official FIDE rules (including en passant, castling privileges, pawn promotion, and 50-move draws) validated using standard perft move-generation trees to ensure mathematically strict move legality.",
+    features: [
+      "Perft Tree Verification against Stockfish reference logs",
+      "Immutable bitboard-inspired state transition handlers",
+      "FEN string import/export & historical move rewinding",
+    ],
+    stack: ["React", "TypeScript", "Vitest", "State Machines"],
+    repoUrl: "https://github.com/anujxsrivastava/chess-engine",
+    repoLinkText: "Code",
+  },
+  {
+    id: "whatsapp-audit",
+    title: "WhatsApp Group Access Audit",
+    category: "automation",
+    featured: false,
+    layout: "card-features",
+    badge: {
+      text: "SECURITY TOOLING",
+      type: "tertiary",
+    },
+    categoryBadge: {
+      text: "COMPANY PROJECT",
+      type: "tertiary-text",
+    },
+    headline:
+      "WhatsApp Group Access Audit — read-only bot that cross-checks group members against the employee roster",
+    description:
+      "A read-only bot that cross-checks company WhatsApp group members against the employee roster and flags who shouldn't be there. Built for internal security hygiene at CarTrends.",
+    features: null,
+    stack: ["Python", "Node.js", "Google Sheets API", "OAuth"],
+    note: "Company project — code private",
+    repoUrl: null,
+    repoLinkText: "Code",
+  },
+  {
+    id: "process-discovery",
+    title: "AI Process Discovery Bot",
+    category: "data",
+    featured: false,
+    layout: "card-features",
+    badge: {
+      text: "APPLIED AI",
+      type: "tertiary",
+    },
+    categoryBadge: {
+      text: "COMPANY PROJECT",
+      type: "tertiary-text",
+    },
+    headline:
+      "AI Process Discovery Bot — chatbot that interviews employees and generates SOPs",
+    description:
+      "A chatbot that interviews employees like a business consultant, then generates SOPs, process maps, and risk reports from their answers. Uses Claude API for structured output generation.",
+    features: null,
+    stack: ["Django", "React", "Claude API", "PostgreSQL"],
+    note: "Company project — code private",
+    repoUrl: null,
+    repoLinkText: "Code",
+  },
+  {
+    id: "student-faculty",
+    title: "Student Faculty Management System",
+    category: "automation",
+    featured: false,
+    layout: "card-features",
+    badge: {
+      text: "WEB APP",
+      type: "tertiary",
+    },
+    categoryBadge: {
+      text: "ACADEMIC PROJECT",
+      type: "tertiary-text",
+    },
+    headline:
+      "Role-based portal with separate student and faculty dashboards, records, and attendance workflows",
+    description:
+      "A role-based portal with separate student and faculty dashboards, records management, and attendance tracking workflows. Built as a full-stack web application.",
+    features: null,
+    stack: ["Python", "Flask", "MySQL"],
+    media: { type: "image", src: "/assets/student_faculty.png" },
+    repoUrl: "https://github.com/anujxsrivastava/Student_Faculty_System",
+    repoLinkText: "Code",
+  },
+  {
+    id: "ecommerce",
+    title: "E-Commerce Store",
+    category: "algorithms",
+    featured: false,
+    layout: "card-features",
+    badge: {
+      text: "WEB APP",
+      type: "tertiary",
+    },
+    categoryBadge: {
+      text: "ACADEMIC PROJECT",
+      type: "tertiary-text",
+    },
+    headline:
+      "Full-stack store with authentication, product catalog, cart, and order management",
+    description:
+      "A full-stack e-commerce store featuring user authentication, product catalog browsing, shopping cart functionality, and complete order management pipeline.",
+    features: null,
+    stack: ["Python", "Django", "SQLite"],
+    repoUrl: "https://github.com/anujxsrivastava/E-commerce",
+    repoLinkText: "Code",
+  },
+  {
+    id: "movie-recommender",
+    title: "Movie Recommendation System",
+    category: "data",
+    featured: false,
+    layout: "card-features",
+    badge: {
+      text: "MACHINE LEARNING",
+      type: "tertiary",
+    },
+    categoryBadge: {
+      text: "ML PROJECT",
+      type: "tertiary-text",
+    },
+    headline:
+      "Content-based recommender that surfaces similar films from a vectorised feature set",
+    description:
+      "A content-based recommendation system that surfaces similar films from a vectorised feature set. Uses scikit-learn for feature extraction and similarity computation.",
+    features: null,
+    stack: ["Python", "Scikit-learn", "Streamlit"],
+    repoUrl: "https://github.com/anujxsrivastava/movie-recommender",
+    repoLinkText: "Code",
+  },
+  {
+    id: "fake-job",
+    title: "Fake Job Posting Detection",
+    category: "data",
+    featured: false,
+    layout: "card-features",
+    badge: {
+      text: "MACHINE LEARNING",
+      type: "tertiary",
+    },
+    categoryBadge: {
+      text: "ML PROJECT",
+      type: "tertiary-text",
+    },
+    headline: "NLP classifier that flags fraudulent job listings from posting text",
+    description:
+      "An NLP classification model that flags fraudulent job listings from posting text. Built with scikit-learn and Pandas for text feature extraction and binary classification.",
+    features: null,
+    stack: ["Python", "Scikit-learn", "Pandas"],
+    repoUrl: "https://github.com/anujxsrivastava/fake-job-dataset",
+    repoLinkText: "Code",
+  },
+  {
+    id: "spam-classifier",
+    title: "Spam Email Classifier",
+    category: "data",
+    featured: false,
+    layout: "card-features",
+    badge: {
+      text: "MACHINE LEARNING",
+      type: "tertiary",
+    },
+    categoryBadge: {
+      text: "ML PROJECT",
+      type: "tertiary-text",
+    },
+    headline: "Text-classification model separating spam from legitimate mail",
+    description:
+      "A text classification model that separates spam from legitimate email using scikit-learn for feature extraction and naive Bayes classification.",
+    features: null,
+    stack: ["Python", "Scikit-learn"],
+    repoUrl: "https://github.com/anujxsrivastava/Spam-Classifier",
+    repoLinkText: "Code",
+  },
+];
+
+export const capabilities = [
+  {
+    title: "Systems & Backend",
+    icon: "terminal",
+    items: [
+      "Python: FastAPI, Django REST, Pydantic, concurrency, async I/O",
+      "Node.js: Express, microservice routing, webhook listeners",
+      "Architecture: Clean REST interfaces, idempotency keys, JWT auth",
+      "Background: Asynchronous task queues, webhook ingestion",
+    ],
+  },
+  {
+    title: "Data & Storage",
+    icon: "database",
+    items: [
+      "PostgreSQL: Complex multi-join queries, schema migrations, GIN indexing",
+      "Engines: MySQL, SQLite, Supabase cloud instances",
+      "Analytics: Pandas, NumPy, relational data normalization",
+      "Integrity: Strict foreign key constraints & automated test fixtures",
+    ],
+  },
+  {
+    title: "Frontend Systems",
+    icon: "web",
+    items: [
+      "React & Vite: Component lifecycle, hooks, state machines, context",
+      "Styling: Tailwind CSS, CSS Custom Properties, high-density layouts",
+      "Data Viz: Chart.js, responsive SVG rendering, metric cards",
+      "TypeScript / JS: ESNext, strong typing across API payloads",
+    ],
+  },
+  {
+    title: "Applied AI & Vision",
+    icon: "visibility",
+    items: [
+      "Computer Vision: YOLOv8, OpenCV image transformations, MediaPipe",
+      "Audio Processing: librosa, FFmpeg audio/video pipeline sync",
+      "LLM Integration: Claude API structured outputs, OCR document extraction",
+      "Messaging: WhatsApp Cloud API webhooks & conversational states",
+    ],
+  },
+  {
+    title: "Deployment & Infra",
+    icon: "deployed_code",
+    items: [
+      "Containers: Docker Compose, containerized dev environments",
+      "Deployment: Render, Vercel, Supabase, Linux VPS environments",
+      "VCS & Tooling: Git branching, automated GitHub Actions checks",
+      "Operating Env: Ubuntu Server, Bash scripts, SSH key automation",
+    ],
+  },
+  {
+    title: "Rigor & Methodology",
+    icon: "verified",
+    items: [
+      "Testing: PyTest, Vitest, perft trees, synthetic click-track mocks",
+      "Debugging: Memory profile checks, query plan analysis (EXPLAIN ANALYZE)",
+      "Documentation: Markdown architecture ADRs, Postman collections",
+      "Operational Mindset: Real user edge cases prioritized over theoretical beauty",
+    ],
+  },
+];
+
+export const experience = [
+  {
+    role: "Full Stack Developer",
+    company: "CarTrends, Delhi",
+    period: "2024 — PRESENT",
+    label: "Production Shipper",
+    details: [
+      "Sole developer of the company's internal software: a procurement-automation system (ProcureHub) and a sales-and-operations platform (OpsFlow), both in daily production use by the operations team.",
+      "Built from ground-up to replace brittle WhatsApp/Excel workflows — incoming vendor documents parsed via OCR, matched to a 14,000+ part catalog, and auto-converted to purchase orders.",
+    ],
+    stack: ["#FastAPI", "#PostgreSQL", "#React", "#Docker", "#WhatsAppAPI"],
+  },
+  {
+    role: "Co-founder & Tutor",
+    company: "Champions' World Academy",
+    period: "2022 — PRESENT",
+    label: "Education & Mentorship",
+    details: [
+      "Co-founded a local tuition academy; teach programming fundamentals and algorithmic problem-solving to secondary school students.",
+      "Designed foundational curricula focused on logic and early Python syntax.",
+    ],
+    stack: ["#Pedagogy", "#AlgorithmicThinking", "#CommunityLeadership"],
+  },
+  {
+    role: "Vice-President",
+    company: "Foto-Grafica (University Photography Society)",
+    period: "2025 — 2026",
+    label: "Campus Leadership",
+    details: [
+      "Led event planning and cross-team coordination for university workshops and inter-college photo exhibitions.",
+      "Managed logistics for over 200+ attendees across 5+ events.",
+    ],
+    stack: ["#EventOperations", "#TeamCoordination", "#VisualStorytelling"],
+  },
+];
+
+export const education = {
+  type: "UNDERGRADUATE CANDIDATE",
+  period: "2023 — 2026",
+  degree: "Bachelor of Computer Applications (BCA)",
+  institution: "Delhi Skill & Entrepreneurship University (DSEU), Dwarka Campus",
+  focus:
+    "Core focus: Data structures & algorithms, database management systems, operating systems, software engineering lifecycles.",
+};
+
+export const certifications = [
+  {
+    name: "Data Analytics Job Simulation",
+    issuer: "Deloitte",
+    credentialUrl:
+      "https://www.linkedin.com/in/anuj-srivastava-20a5b229a/overlay/Certifications/633218790/treasury/?profileId=ACoAAEhY5aoBtDH5YTaNKA8lNokb9cKlPJKWp7g",
+  },
+  {
+    name: "Foundations in Generative AI",
+    issuer: "IBM",
+    credentialUrl:
+      "https://www.linkedin.com/in/anuj-srivastava-20a5b229a/overlay/Certifications/633372708/treasury/?profileId=ACoAAEhY5aoBtDH5YTaNKA8lNokb9cKlPJKWp7g",
+  },
+  {
+    name: "GenAI Powered Data Analytics Job Simulation",
+    issuer: "Forage",
+    credentialUrl:
+      "https://www.linkedin.com/in/anuj-srivastava-20a5b229a/overlay/Certifications/633032426/treasury/?profileId=ACoAAEhY5aoBtDH5YTaNKA8lNokb9cKlPJKWp7g",
+  },
+];
+
+export const about = {
+  heading: "Engineering Philosophy & Ground Truth",
+  quotes: [
+    "I believe software should be grounded in operational reality. The most resilient code doesn't come from hypothetical architecture diagrams, but from observing edge cases, handling malformed real-world data, and iterating alongside the people who actually depend on the system every day.",
+  ],
+  facts: [
+    { label: "LOCATION BASE", value: "Delhi, India (Open to Relocation & Remote)" },
+    { label: "OFF-SCREEN EXPLORATION", value: "Street photography, chess theory, tutoring" },
+    { label: "CURRENTLY RESEARCHING", value: "Distributed consensus & streaming protocols" },
+  ],
+};
+
+export const footerNote =
+  "Designed and built in Delhi with React, Vite, Framer Motion, and a lot of chai.";

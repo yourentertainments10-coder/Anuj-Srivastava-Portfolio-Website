@@ -1,10 +1,10 @@
 export const profile = {
   name: "Anuj Srivastava",
   handle: "anuj",
-  role: "Full-Stack Developer",
+  role: "Backend & Applied AI Developer",
   location: "Delhi, India",
   positioning:
-    "I build the software a business actually runs on — procurement automation, internal operations platforms, and applied AI — with Python and React.",
+    "I build practical software systems with Python, backend engineering, AI/ML, workflow automation, and data analytics — from messy input data to tested, useful tools.",
   availability: "Open to software roles & internships",
   degreeLine: "BCA '26",
   email: "anujxsrivastava@gmail.com",
@@ -35,25 +35,44 @@ export const navItems = ["Projects", "Skills", "Experience", "About", "Contact"]
 export const projects = [
   {
     featured: true,
+    title: "ResearchFlow",
+    tag: "Sports Research & Analytics",
+    note: null,
+    oneLiner:
+      "Competition-agnostic sports research platform for ingesting, validating, and analysing historical results.",
+    story:
+      "ResearchFlow turns fragmented sports records into a queryable analytical dataset. I worked on the ingestion and normalization pipeline, strict validation, relational database design, and reporting workflow so event, sport, and placing records can be reconciled consistently. The repository currently documents 1,568 placings across 469 distinct events and 49 sports; these figures are dataset-level project evidence, not a production usage claim.",
+    metrics: [
+      { value: "1,568", label: "placings in dataset" },
+      { value: "469", label: "distinct events" },
+      { value: "49", label: "sports represented" },
+    ],
+    stack: ["Python", "FastAPI", "PostgreSQL", "React", "Pytest"],
+    media: null,
+    repoUrl: "https://github.com/yourentertainments10-coder/ResearchFlow",
+    liveUrl: "https://researchflow.yourentertainments10.workers.dev/",
+  },
+  {
+    featured: true,
     title: "ProcureHub",
-    tag: "Production System",
+    tag: "Workflow Automation",
     note: "Company project — code private",
     oneLiner:
-      "Vendor-inventory and order-fulfillment automation for an auto-parts trading business.",
+      "WhatsApp- and email-driven procurement workflow for vendor stock, customer orders, and purchase processing.",
     story:
-      "Vendor stock lists, customer orders, and invoices all arrived as unstructured files over WhatsApp and Gmail, and were reconciled by hand in spreadsheets. ProcureHub classifies every incoming document, imports it into one shared database, and allocates each order across every vendor's live remaining stock automatically — then generates the purchase orders, verifies invoices against the allocations, and scores vendor reliability.",
+      "Vendor stock lists, customer orders, and invoices arrive as photos, PDFs, and messages over WhatsApp and Gmail. I built the backend workflow that parses and validates incoming data, stores it in PostgreSQL, allocates orders against vendor stock, and supports purchase-order and invoice workflows. The core procurement and vendor-order features are in daily use by the company; automated vendor bidding remains under validation and is not presented as complete.",
     metrics: [
       { value: "48", label: "API endpoints" },
       { value: "24", label: "database tables" },
-      { value: "Live", label: "in daily use" },
+      { value: "Daily", label: "core workflow use" },
     ],
-    stack: ["Python", "FastAPI", "React", "PostgreSQL", "WhatsApp API", "Gmail API"],
+    stack: ["Python", "FastAPI", "React", "PostgreSQL", "WhatsApp API", "Gmail API", "OCR"],
     media: null,
     repoUrl: null,
     liveUrl: null,
   },
   {
-    featured: true,
+    featured: false,
     title: "OpsFlow",
     tag: "Internal Platform",
     note: "Company project — code private",
@@ -73,26 +92,37 @@ export const projects = [
   },
   {
     featured: true,
-    title: "AI Smart Classroom",
-    tag: "Computer Vision",
+    title: "Beat Flash",
+    tag: "Audio / Video POC",
     note: null,
     oneLiner:
-      "Face-recognition attendance and live engagement monitoring from a single camera feed.",
+      "Beat-aligned short-video generation proof of concept built with Python, librosa, and FFmpeg.",
     story:
-      "Manual attendance wastes class time and says nothing about attention. This combines YOLOv8 detection with face recognition to mark attendance automatically and track several students' engagement at once, feeding a live analytics dashboard. The hard part was keeping identities stable frame to frame when students overlap, turn away, or leave and re-enter the frame.",
+      "Beat Flash analyses an audio track for beat and onset timing, maps those timestamps to source footage, and uses FFmpeg to render a sequence of timed cuts. I built the Python pipeline and explored its behaviour on different audio and video inputs. It is a proof of concept: beat detection and rendering work for tested inputs, while complex rhythms and production-grade editing controls remain limitations.",
     metrics: [
-      { value: "Real-time", label: "multi-student tracking" },
-      { value: "1", label: "camera, no hardware" },
+      { value: "POC", label: "implementation status" },
+      { value: "2", label: "core pipeline stages" },
     ],
-    stack: ["Python", "OpenCV", "YOLOv8", "Flask", "MySQL"],
-    media: { type: "image", src: "/assets/smart classroom.png" },
-    repoUrl:
-      "https://github.com/yourentertainments10-coder/smart-attendance-system",
+    stack: ["Python", "librosa", "FFmpeg", "NumPy"],
+    media: null,
+    repoUrl: "https://github.com/yourentertainments10-coder/Video-Editor",
     liveUrl: null,
   },
 
   /* ── Everything below is hidden behind "Show all projects" ───────────── */
 
+  {
+    featured: false,
+    title: "AI Smart Classroom",
+    tag: "Computer Vision",
+    note: null,
+    oneLiner:
+      "Face-based attendance, engagement monitoring, and classroom analytics from a camera feed.",
+    stack: ["Python", "OpenCV", "YOLOv8", "MediaPipe", "Flask", "MySQL"],
+    media: { type: "image", src: "/assets/smart classroom.png" },
+    repoUrl:
+      "https://github.com/yourentertainments10-coder/smart-attendance-system",
+  },
   {
     featured: false,
     title: "WhatsApp Group Access Audit",
@@ -126,11 +156,11 @@ export const projects = [
   },
   {
     featured: false,
-    title: "Chess",
-    tag: "React",
+    title: "Chess Game / Chess Engine",
+    tag: "Game Logic",
     note: null,
     oneLiner:
-      "Browser chess with full move validation and game-state logic written from scratch — no chess library.",
+      "Browser chess interface with move validation and game-state logic implemented from scratch, without a chess library.",
     stack: ["React", "JavaScript", "CSS"],
     repoUrl: "https://github.com/yourentertainments10-coder/Chess",
   },
@@ -142,7 +172,7 @@ export const projects = [
     oneLiner:
       "Full-stack store with authentication, product catalog, cart, and order management.",
     stack: ["Python", "Django", "SQLite"],
-    repoUrl: "https://github.com/yourentertainments10-coder/E-commerce",
+    repoUrl: "https://github.com/yourentertainments10-coder/CodeAlpha_Ecommerce",
   },
   {
     featured: false,
@@ -152,7 +182,7 @@ export const projects = [
     oneLiner:
       "Content-based recommender that surfaces similar films from a vectorised feature set.",
     stack: ["Python", "Scikit-learn", "Streamlit"],
-    repoUrl: "https://github.com/yourentertainments10-coder/movie-recommender",
+    repoUrl: "https://github.com/yourentertainments10-coder/Movie_recommender",
   },
   {
     featured: false,
@@ -162,7 +192,7 @@ export const projects = [
     oneLiner:
       "NLP classifier that flags fraudulent job listings from posting text.",
     stack: ["Python", "Scikit-learn", "Pandas"],
-    repoUrl: "https://github.com/yourentertainments10-coder/fake-job-dataset",
+    repoUrl: null,
   },
   {
     featured: false,
@@ -171,38 +201,56 @@ export const projects = [
     note: null,
     oneLiner: "Text-classification model separating spam from legitimate mail.",
     stack: ["Python", "Scikit-learn"],
-    repoUrl: "https://github.com/yourentertainments10-coder/Spam-Classifier",
+    repoUrl: null,
   },
 ];
 
 export const skillGroups = [
   {
-    title: "Languages",
+    title: "Programming",
     items: ["Python", "JavaScript", "SQL", "HTML & CSS"],
   },
   {
-    title: "Frameworks",
+    title: "Backend",
     items: ["React", "FastAPI", "Django REST", "Flask", "Node.js / Express"],
   },
   {
-    title: "Data & Infra",
-    items: ["PostgreSQL", "MySQL", "SQLite", "Render", "Vercel", "Neon"],
+    title: "AI / ML",
+    items: ["OpenCV", "YOLOv8", "MediaPipe", "Scikit-learn"],
   },
   {
-    title: "Tools & APIs",
+    title: "Databases",
+    items: ["PostgreSQL", "MySQL", "SQLite"],
+  },
+  {
+    title: "Data Analytics",
+    items: ["Pandas", "Power BI"],
+  },
+  {
+    title: "Frontend",
+    items: ["React", "JavaScript", "HTML & CSS"],
+  },
+  {
+    title: "Tools & Automation",
     items: [
       "Git & GitHub",
       "WhatsApp Cloud API",
       "Gmail API",
       "Claude API",
-      "Pandas",
-      "Scikit-learn",
-      "Power BI",
+      "FFmpeg",
     ],
   },
 ];
 
 export const experience = [
+  {
+    role: "Full Stack Development Intern",
+    company: "CodeAlpha",
+    period: "20 Jun — 20 Jul 2026",
+    details: [
+      "Completed a full-stack development internship; exact deliverables should be added from the internship completion record before being presented as specific claims.",
+    ],
+  },
   {
     role: "Full Stack Developer",
     company: "CarTrends, Delhi",
@@ -232,10 +280,15 @@ export const experience = [
 export const education = {
   degree: "Bachelor of Computer Applications",
   institution: "Delhi Skill & Entrepreneurship University, Dwarka",
-  period: "2023 — 2026",
+  period: "2023 — 2026 · Degree status to be confirmed",
 };
 
 export const certifications = [
+  {
+    name: "Data Visualisation",
+    issuer: "Tata",
+    credentialUrl: null,
+  },
   {
     name: "Data Analytics Job Simulation",
     issuer: "Deloitte",
@@ -267,9 +320,9 @@ export const about = {
   photo: null,
   photoAlt: "Anuj Srivastava",
   content: [
-    "I'm a BCA graduate from Delhi who learned to build software by shipping it for a real business. The procurement system and operations platform in my projects run a live company's daily work, which taught me more about edge cases, dirty data, and what users actually do than any tutorial could.",
-    "I like the unglamorous parts — reconciling a vendor file that arrived as a photo of a spreadsheet, or working out why a round-robin assignment skipped someone. Most of what I know about databases and error handling came from something breaking in front of a real user.",
-    "Outside of code: I shoot photos and served as vice-president of my university's photography society, I've spent four years tutoring school kids at an academy I co-founded, and I play chess badly enough that I built my own chess engine to practise against.",
+    "I'm a software developer focused on building practical software systems, AI-powered applications, and data-driven tools. My work spans backend development, Python, workflow automation, computer vision, and analytics.",
+    "I enjoy taking a problem from research and system design through implementation, testing, and deployment. Projects such as ResearchFlow, ProcureHub, Beat Flash, and AI Smart Classroom have helped me explore reliable data pipelines, useful automation, and clear data insights without overstating what is still a prototype.",
+    "Outside of code, I shoot photos, served as vice-president of my university's photography society, tutor school students at an academy I co-founded, and build chess software to deepen my understanding of game logic.",
   ],
   // Compact fact row under the About text. Keep to 3-4 items.
   facts: [

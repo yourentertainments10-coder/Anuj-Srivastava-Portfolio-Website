@@ -1,0 +1,1292 @@
+import React from "react";
+import {
+  ArrowUpRight,
+  Check,
+  Cloud,
+  Copy,
+  Database,
+  Download,
+  Eye,
+  FileText,
+  Filter,
+  Github,
+  Globe,
+  GraduationCap,
+  LayoutDashboard,
+  Linkedin,
+  Lock,
+  Mail,
+  Moon,
+  Plus,
+  Rocket,
+  Shield,
+  Terminal,
+  Sun,
+  X,
+} from "lucide-react";
+import {
+  motion,
+  useScroll,
+  useSpring,
+  useReducedMotion,
+} from "framer-motion";
+import { useState, useEffect, useLayoutEffect, useRef, useCallback } from "react";
+
+import {
+  about,
+  certifications,
+  education,
+  experience,
+  filterCategories,
+  footerNote,
+  heroBio,
+  capabilities,
+  navItems,
+  pipelineSteps,
+  profile,
+  quickMetrics,
+  systemInfo,
+  caseStudies,
+} from "./portfolioData.js";
+
+import { animations, reducedAnimations, viewport, interactions } from "./designTokens.js";
+
+const iconMap = {
+  cloud_download: Cloud,
+  filter_alt: Filter,
+  database: Database,
+  dashboard: LayoutDashboard,
+  terminal: Terminal,
+  web: Globe,
+  visibility: Eye,
+  deployed_code: Rocket,
+  verified: Shield,
+};
+
+function IconLookup({ name, size = 16, className = "" }) {
+  const Icon = iconMap[name];
+  if (!Icon) return null;
+  return <Icon size={size} className={className} aria-hidden="true" />;
+}
+
+function useToast() {
+  const [toasts, setToasts] = useState([]);
+  const addToast = useCallback((message) => {
+    const id = Date.now() + Math.random();
+    setToasts((prev) => {
+      const updated = [...prev, { id, message }];
+      if (updated.length > 3) updated.shift();
+      return updated;
+    });
+    setTimeout(() => {
+      setToasts((prev) => prev.filter((t) => t.id !== id));
+    }, 3500);
+  }, []);
+  const removeToast = useCallback((id) => {
+    setToasts((prev) => prev.filter((t) => t.id !== id));
+  }, []);
+  return { toasts, addToast, removeToast };
+}
+
+function useTheme() {
+  const [theme, setTheme] = useState(() => {
+    if (typeof window === "undefined") return "light";
+    const stored = window.localStorage.getItem("theme");
+    return stored === "light" || stored === "dark" ? stored : "light";
+  });
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+    window.localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  return [theme, () => setTheme((t) => (t === "dark" ? "light" : "dark"))];
+}
+
+function Button({ className = "", children, ...rest }) {
+  const prefersReducedMotion = useReducedMotion();
+  return (
+    <motion.a
+      className={`btn ${className}`.trim()}
+      whileTap={prefersReducedMotion ? undefined : interactions.tap}
+      transition={interactions.tapTransition}
+      {...rest}
+    >
+      {children}
+    </motion.a>
+  );
+}
+
+function FadeImage({ src, alt, className = "", eager = false }) {
+  const [loaded, setLoaded] = useState(false);
+  const imgRef = useRef(null);
+
+  useEffect(() => {
+    if (imgRef.current?.complete) setLoaded(true);
+  }, []);
+
+  return (
+    <img
+      ref={imgRef}
+      src={src}
+      alt={alt}
+      loading={eager ? "eager" : "lazy"}
+      className={`fade-img ${loaded ? "is-loaded" : ""} ${className}`.trim()}
+      onLoad={() => setLoaded(true)}
+    />
+  );
+}
+
+function SectionHeader({ index, label, title, description }) {
+  return (
+    <div className="section-header">
+      <div className="label-row">
+        <span className="num">{String(index).padStart(2, "0")}</span>
+        {label}
+      </div>
+      <h2>{title}</h2>
+      {description && <p className="description">{description}</p>}
+    </div>
+  );
+}
+
+function DiagnosticTicker() {
+  return (
+    <div className="diagnostic-ticker">
+      <div className="inner">
+        <div className="left">
+          {systemInfo.map((item, i) => (
+            <React.Fragment key={item.label}>
+              {i > 0 && <span className="separator">/</span>}
+              <span className="item">
+                <span className="dot" aria-hidden="true" />
+                <span className="value">{item.label}</span>
+                <span className="value">{item.value}</span>
+              </span>
+            </React.Fragment>
+          ))}
+        </div>
+        <div className="role-badge">{profile.role}</div>
+      </div>
+    </div>
+  );
+}
+
+function Hero() {
+  const prefersReducedMotion = useReducedMotion();
+  const anim = prefersReducedMotion ? reducedAnimations : animations;
+
+  return (
+    <motion.section
+      id="hero"
+      className="hero section-shell"
+      variants={anim.fadeIn}
+      initial="hidden"
+      animate="visible"
+    >
+      <div className="inner">
+        <div className="hero-content">
+          <span className="hero-label">Systems & Full-Stack Engineering</span>
+          <h1 className="hero-title">{profile.name}</h1>
+          <p className="hero-quote">{heroBio}</p>
+
+          <div className="quick-metrics">
+            {quickMetrics.map((m) => (
+              <div key={m.label} className="quick-metric">
+                <span className="label">{m.label}</span>
+                <span className="value">{m.value}</span>
+                <span className="sub">{m.sub}</span>
+              </div>
+            ))}
+          </div>
+
+          <div className="hero-actions">
+            <Button
+              className="primary"
+              href={profile.resumeUrl}
+              download
+              aria-label="Download resume PDF"
+            >
+              Resume
+            </Button>
+            <Button
+              href={profile.githubUrl}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="View GitHub profile"
+            >
+              GitHub
+            </Button>
+            <Button
+              href={`mailto:${profile.email}`}
+              aria-label={`Email ${profile.email}`}
+            >
+              <Mail size={18} aria-hidden="true" /> Email
+            </Button>
+          </div>
+        </div>
+
+        {profile.photo && (
+          <motion.div
+            className="hero-photo"
+            variants={anim.fadeIn}
+            initial="hidden"
+            animate="visible"
+            transition={{ delay: 0.25 }}
+          >
+            <FadeImage src={profile.photo} alt={profile.photoAlt} eager />
+          </motion.div>
+        )}
+      </div>
+    </motion.section>
+  );
+}
+
+function ArchitecturePanel() {
+  return (
+    <div className="architecture-panel">
+      <div className="architecture-header">
+        <div className="dots">
+          <span className="dot error" />
+          <span className="dot tertiary" />
+          <span className="dot outline" />
+        </div>
+        <span className="title">PIPELINE EXECUTION TRACE</span>
+        <span className="status">LIVE</span>
+      </div>
+
+      <div className="architecture-body">
+        <div className="comment">// ProcureHub — Multi-channel procurement pipeline</div>
+        <div className="pipeline">
+          {pipelineSteps.map((step, i) => (
+            <React.Fragment key={step.label}>
+              {i > 0 && (
+                <div className="pipeline-arrow">
+                  <ArrowUpRight size={12} aria-hidden="true" />
+                </div>
+              )}
+              <div className="pipeline-step">
+                <div className="left">
+                  <span className="icon">
+                    <IconLookup name={step.icon} size={16} />
+                  </span>
+                  <span className="step-label">{step.label}</span>
+                </div>
+                <span className="detail primary">{step.detail}</span>
+              </div>
+            </React.Fragment>
+          ))}
+        </div>
+      </div>
+
+      <div className="architecture-footer">
+        <span className="left">ProcureHub — Delhi Ops</span>
+        <span className="right">
+          → {pipelineSteps.length} stage pipeline
+        </span>
+      </div>
+    </div>
+  );
+}
+
+function FilterToolbar({ activeFilter, setActiveFilter, showAll, setShowAll, total }) {
+  return (
+    <div className="filter-toolbar">
+      <div className="inner">
+        <div className="label">Filter by</div>
+        <div className="buttons">
+          {filterCategories.map((cat) => (
+            <button
+              key={cat.id}
+              type="button"
+              className={`filter-btn ${activeFilter === cat.id ? "active" : ""}`}
+              onClick={() => {
+                setActiveFilter(cat.id);
+                setShowAll(false);
+              }}
+            >
+              {cat.label}
+            </button>
+          ))}
+        </div>
+
+          {total > 6 && (
+            <button
+              type="button"
+              className="filter-btn"
+              onClick={() => setShowAll((v) => !v)}
+              aria-expanded={showAll}
+            >
+              <Plus size={14} aria-hidden="true" className={showAll ? "is-open" : ""} />
+              {showAll ? "Show fewer" : `Show all ${total}`}
+            </button>
+          )}
+          </div>
+    </div>
+  );
+}
+
+function CaseStudyCard({ study }) {
+  const prefersReducedMotion = useReducedMotion();
+
+  return (
+    <motion.article
+      className={`project-card ${
+        study.layout === "card-features" || study.layout === "card-grid"
+          ? "simple-card"
+          : ""
+      }`}
+      key={study.id}
+      variants={prefersReducedMotion ? { opacity: 1 } : animations.fadeUp}
+      whileHover={
+        prefersReducedMotion
+          ? undefined
+          : { y: -8, transition: { duration: 0.3, ease: [0.4, 0, 0.2, 1] } }
+      }
+    >
+      <div className="project-card-inner">
+        {study.layout === "detailed-metrics" && (
+          <>
+            <div className="card-topline">
+              <span className={`card-tag ${study.badge.type}`}>{study.badge.text}</span>
+              {study.statusBadge && (
+                <span className={`card-status ${study.statusBadge.type}`}>
+                  {study.statusBadge.type === "mismatch" && (
+                    <span className="dot" aria-hidden="true" />
+                  )}
+                  {study.statusBadge.text}
+                </span>
+              )}
+            </div>
+
+            <h3 className="case-title">{study.title}</h3>
+            <p className="case-description">{study.headline}</p>
+
+            <div className="case-content">
+              <div className="case-content-main">
+                <div>
+                  <h4>Challenge</h4>
+                  <p>{study.challenge}</p>
+                </div>
+                <div>
+                  <h4>Solution</h4>
+                  <p>{study.solution}</p>
+                </div>
+
+                <div className="topology-section">
+                  <span className="section-label">{study.topologyIntro}</span>
+                  <div className="topology-grid">
+                    {study.topology.map((step) => (
+                      <div key={step.step} className="step">
+                        <div className="step-label">{step.step}</div>
+                        <div className="step-primary">{step.label}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="terminal">
+                  <div className="comment">{study.terminalNote}</div>
+                  {study.terminalOutput.map((line, i) => (
+                    <div
+                      key={i}
+                      className={line.className}
+                    >
+                      {line.text}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="case-content-side">
+                <div className="metrics-header">
+                  <span className="title">{study.metricsHeader}</span>
+                  <span className="badge">{study.metricsBadge}</span>
+                </div>
+                <div className="metrics-grid">
+                  {study.metrics.map((m) => (
+                    <div key={m.label} className="metric-card">
+                      <div className="label">{m.label}</div>
+                      <div className="value primary">{m.value}</div>
+                      {m.sub && <div className="note">{m.sub}</div>}
+                    </div>
+                  ))}
+                </div>
+
+                <div className="stack-tags">
+                  {study.stack.map((item) => (
+                    <span key={item} className="stack-tag">
+                      {item}
+                    </span>
+                  ))}
+                </div>
+
+                {study.repoUrl && (
+                  <div className="card-footer">
+                    <span className="info">{study.dbInfo}</span>
+                    <a
+                      className="repo-link"
+                      href={study.repoUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {study.repoLinkText}
+                      <ArrowUpRight size={12} aria-hidden="true" />
+                    </a>
+                  </div>
+                )}
+              </div>
+            </div>
+          </>
+        )}
+
+        {study.layout === "detailed-pipeline" && (
+          <>
+            <div className="card-topline">
+              <span className={`card-tag ${study.badge.type}`}>{study.badge.text}</span>
+              {study.statusBadge && (
+                <span className={`card-status ${study.statusBadge.type}`}>
+                  {study.statusBadge.text}
+                </span>
+              )}
+            </div>
+
+            <h3 className="case-title">{study.title}</h3>
+            <p className="case-description">{study.headline}</p>
+
+            {study.statusAudit && (
+              <div className="status-audit">
+                <strong>Status:</strong> {study.statusAudit}
+              </div>
+            )}
+
+            <div className="case-content">
+              <div className="case-content-main">
+                <div>
+                  <h4>Challenge</h4>
+                  <p>{study.challenge}</p>
+                </div>
+                <div>
+                  <h4>Solution</h4>
+                  <p>{study.solution}</p>
+                </div>
+
+                <div className="pipeline-trace">
+                  {study.pipelineTrace.map((step) => (
+                    <div key={step.label} className="trace-item">
+                      <span className="label">{step.label}</span>
+                      <span
+                        className={`status ${
+                          step.status === "200 OK"
+                            ? "ok"
+                            : step.status === "Processing"
+                            ? "warn"
+                            : "ok"
+                        }`}
+                      >
+                        {step.status}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="case-content-side">
+                <div className="metrics-header">
+                  <span className="title">{study.metricsHeader}</span>
+                  <span className="badge">{study.metricsBadge}</span>
+                </div>
+                <div className="metrics-grid">
+                  {study.metrics.map((m) => (
+                    <div key={m.label} className="metric-card">
+                      <div className="label">{m.label}</div>
+                      <div className="value primary">{m.value}</div>
+                      {m.sub && <div className="note">{m.sub}</div>}
+                    </div>
+                  ))}
+                </div>
+
+                <div className="stack-tags">
+                  {study.stack.map((item) => (
+                    <span key={item} className="stack-tag">
+                      {item}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="card-footer">
+                  <span className="info">{study.client}</span>
+                  {study.repoUrl && (
+                    <a
+                      className="repo-link"
+                      href={study.repoUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {study.repoLinkText}
+                      <ArrowUpRight size={12} aria-hidden="true" />
+                    </a>
+                  )}
+                </div>
+              </div>
+            </div>
+          </>
+        )}
+
+        {(study.layout === "card-features" || study.layout === "card-grid") && (
+          <>
+            {study.media && study.media.type === "image" && (
+              <div className="simple-card-media">
+                <FadeImage src={study.media.src} alt={`${study.title} screenshot`} />
+              </div>
+            )}
+
+            <div className="card-topline">
+              <span className={`card-tag ${study.badge.type}`}>{study.badge.text}</span>
+              {study.categoryBadge && (
+                <span className={`card-tag ${study.categoryBadge.type}`}>
+                  {study.categoryBadge.text}
+                </span>
+              )}
+            </div>
+
+            <h3 className="case-title">{study.title}</h3>
+            <p className="case-description">{study.headline}</p>
+            <p className="case-description">{study.description}</p>
+
+            {study.features && study.features.length > 0 && (
+              <div className="simple-features">
+                {study.features.map((feature) => (
+                  <div key={feature} className="feature-item">
+                    <span className="marker">•</span>
+                    {feature}
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {study.featureGrid && (
+              <div className="feature-grid">
+                {study.featureGrid.map((item) => (
+                  <div key={item.label} className="grid-item">
+                    <span className="label">{item.label}</span>
+                    <span className="value">{item.value}</span>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            <div className="simple-card-bottom">
+              <div className="stack-tags">
+                {study.stack.map((item) => (
+                  <span key={item} className="stack-tag">
+                    {item}
+                  </span>
+                ))}
+              </div>
+
+              {study.note && (
+                <span className="card-status">
+                  <Lock size={11} aria-hidden="true" />
+                  {study.note}
+                </span>
+              )}
+
+              {study.liveUrl && (
+                <a
+                  className="action-link"
+                  href={study.liveUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Live demo
+                  <ArrowUpRight size={14} aria-hidden="true" />
+                </a>
+              )}
+
+              {study.repoUrl ? (
+                <a
+                  className="action-link"
+                  href={study.repoUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {study.repoLinkText}
+                  <ArrowUpRight size={14} aria-hidden="true" />
+                </a>
+              ) : (
+                <span className="action-link">
+                  {study.repoLinkText}
+                  <ArrowUpRight size={14} aria-hidden="true" />
+                </span>
+              )}
+            </div>
+          </>
+        )}
+      </div>
+    </motion.article>
+  );
+}
+
+function CapabilitiesSection() {
+  return (
+    <section id="capabilities" className="section-shell capabilities">
+      <div className="container">
+        <SectionHeader
+          index={3}
+          label="Capabilities"
+          title="Systems I Build With"
+          description="Full-stack engineering spanning backend architecture, data pipelines, and applied AI."
+        />
+        <motion.div
+          className="capabilities-grid"
+          variants={animations.stagger}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
+        >
+          {capabilities.map((cap) => (
+            <motion.article
+              key={cap.title}
+              className="capability-card"
+              variants={animations.fadeUp}
+            >
+              <div className="capability-card-header">
+                <h3>{cap.title}</h3>
+                <IconLookup name={cap.icon} size={20} />
+              </div>
+              <ul>
+                {cap.items.map((item) => {
+                  const parts = item.split(":");
+                  return (
+                    <li key={item}>
+                      <span className="marker">▹</span>
+                      <span className="text">
+                        <strong>{parts[0]}:</strong> {parts[1]?.trim()}
+                      </span>
+                    </li>
+                  );
+                })}
+              </ul>
+            </motion.article>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+function ExperienceSection() {
+  return (
+    <section id="experience" className="section-shell experience">
+      <div className="inner">
+        <div className="experience-grid">
+          <div className="experience-main">
+            <SectionHeader
+              index={4}
+              label="Experience"
+              title="Work Timeline"
+              description="Production systems and leadership across startups and academia."
+            />
+
+            <div className="timeline">
+              {experience.map((item) => (
+                <div key={`${item.role}-${item.company}`} className="timeline-item">
+                  <div className="header">
+                    <span className="period">{item.period}</span>
+                    <span className="label">{item.label}</span>
+                  </div>
+                  <h3>{item.role}</h3>
+                  <span className="company">{item.company}</span>
+
+                  <ul className="details">
+                    {item.details.map((detail) => (
+                      <li key={detail}>{detail}</li>
+                    ))}
+                  </ul>
+
+                  <div className="stack">
+                    {item.stack.map((s) => (
+                      <span key={s}>{s}</span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="certifications">
+              <h3>
+                <GraduationCap size={16} aria-hidden="true" />
+                Certifications
+              </h3>
+              <ul>
+                {certifications.map((cert) => (
+                  <li key={cert.name}>
+                    <a href={cert.credentialUrl} target="_blank" rel="noreferrer">
+                      {cert.name}
+                      <span> — {cert.issuer}</span>
+                      <ArrowUpRight size={14} aria-hidden="true" />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <div className="experience-side">
+            <div className="education-card">
+              <span className="type-badge">{education.type}</span>
+              <span className="period">{education.period}</span>
+              <div className="content">
+                <GraduationCap size={28} className="icon" aria-hidden="true" />
+                <div className="details">
+                  <h3>{education.degree}</h3>
+                  <p>{education.institution}</p>
+                </div>
+              </div>
+              <p className="focus">{education.focus}</p>
+            </div>
+
+            <div className="bio-card">
+              <div className="header">
+                <FadeImage
+                  src="/assets/anuj.jpeg"
+                  alt={profile.name}
+                  className="photo"
+                  eager
+                />
+                <div className="info">
+                  <h3>{profile.name}</h3>
+                  <span className="sub">{profile.role}</span>
+                </div>
+              </div>
+              <p>{heroBio}</p>
+              <dl className="facts-list">
+                {about.facts.map((fact) => (
+                  <React.Fragment key={fact.label}>
+                    <dt>{fact.label}</dt>
+                    <dd>{fact.value}</dd>
+                  </React.Fragment>
+                ))}
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function PhilosophySection() {
+  return (
+    <section id="philosophy" className="section-shell about-section">
+      <div className="container">
+        <SectionHeader
+          index={5}
+          label="Philosophy"
+          title={about.heading}
+          description="Engineering grounded in operational reality."
+        />
+
+        <div className="bio-card">
+          <div className="header">
+            <FadeImage
+              src="/assets/anuj.jpeg"
+              alt={profile.name}
+              className="photo"
+              eager
+            />
+            <div className="info">
+              <h3>{profile.name}</h3>
+              <span className="sub">{profile.role}</span>
+            </div>
+          </div>
+
+          {about.quotes.map((quote, i) => (
+            <p key={i}>{quote}</p>
+          ))}
+
+          <dl className="facts-list">
+            {about.facts.map((fact) => (
+              <React.Fragment key={fact.label}>
+                <dt>{fact.label}</dt>
+                <dd>{fact.value}</dd>
+              </React.Fragment>
+            ))}
+          </dl>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ContactSection({ onToast }) {
+  const [copied, setCopied] = useState(false);
+
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(profile.email);
+      setCopied(true);
+      onToast("Copied email to clipboard");
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      onToast("Could not copy — select manually");
+    }
+  };
+
+  return (
+    <section id="contact" className="contact-section">
+      <div className="inner">
+        <div className="contact-grid">
+          <div className="contact-main">
+            <div className="header">
+              <div className="label-row">
+                <span className="num">06</span>
+                AVAILABLE FOR ROLES
+              </div>
+              <h2>Let's build something useful.</h2>
+            </div>
+
+            <div className="contact-message">
+              <p>
+                {profile.availability}. The fastest way to reach me is email.
+              </p>
+              <p>
+                Open to full-time roles, internships, and collaboration on
+                interesting problems.
+              </p>
+            </div>
+
+            <div className="email-copy">
+              <span className="label">EMAIL</span>
+              <span className="address">{profile.email}</span>
+              <div className="actions">
+                <button
+                  type="button"
+                  className="btn-copy"
+                  onClick={copyEmail}
+                  aria-label="Copy email address"
+                >
+                  {copied ? (
+                    <Check size={14} aria-hidden="true" />
+                  ) : (
+                    <Copy size={14} aria-hidden="true" />
+                  )}
+                  {copied ? "Copied!" : "Copy"}
+                </button>
+                <a
+                  href={`mailto:${profile.email}`}
+                  className="btn-send"
+                  aria-label="Open email client"
+                >
+                  <Mail size={14} aria-hidden="true" /> Send
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div className="contact-side">
+            <div className="social-grid">
+              <span className="social-label">Social</span>
+              <a
+                className="social-link"
+                href={profile.githubUrl}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <span className="left">
+                  <Github size={16} className="icon" aria-hidden="true" />
+                  <span className="text">GitHub</span>
+                </span>
+                <ArrowUpRight size={14} className="arrow" aria-hidden="true" />
+              </a>
+              <a
+                className="social-link"
+                href={profile.linkedinUrl}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <span className="left">
+                  <Linkedin size={16} className="icon" aria-hidden="true" />
+                  <span className="text">LinkedIn</span>
+                </span>
+                <ArrowUpRight size={14} className="arrow" aria-hidden="true" />
+              </a>
+              <a
+                className="social-link"
+                href={profile.resumeUrl}
+                download
+              >
+                <span className="left">
+                  <FileText size={16} className="icon" aria-hidden="true" />
+                  <span className="text">Resume PDF</span>
+                </span>
+                <ArrowUpRight size={14} className="arrow" aria-hidden="true" />
+              </a>
+              <span className="response-time">Usually responds within 24h</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Header({ activeSection, linkRefs, navRef, indicatorStyle, theme, toggleTheme, isScrolled }) {
+  const prefersReducedMotion = useReducedMotion();
+
+  const navConfig = navItems.map((item, i) => {
+    const lower = item.toLowerCase();
+    let href = `#${lower}`;
+    if (item === "Work" || item === "Case Studies") href = "#case-studies";
+    if (item === "Architecture") href = "#hero";
+    return { label: item, href, lower, num: i + 1 };
+  });
+
+  return (
+    <header className={`site-header ${isScrolled ? "scrolled" : ""}`}>
+      <div className="header-inner inner">
+        <div className="header-brand">
+          <span className="brand-mark">AS</span>
+          <span className="brand-path">~/{profile.handle}</span>
+          <span className="brand-status">
+            <span className="dot" aria-hidden="true" />
+            {profile.availability}
+          </span>
+        </div>
+
+        <nav className="header-nav" aria-label="Primary navigation" ref={navRef}>
+          <motion.span
+            className="nav-indicator"
+            animate={{
+              x: indicatorStyle.x,
+              y: indicatorStyle.y,
+              width: indicatorStyle.width,
+              opacity: indicatorStyle.opacity,
+            }}
+            transition={prefersReducedMotion ? { duration: 0 } : interactions.navIndicator}
+            aria-hidden="true"
+          />
+          {navConfig.map((item) => (
+            <a
+              key={item.label}
+              ref={(el) => {
+                linkRefs.current[item.lower] = el;
+              }}
+              href={item.href}
+              className={`nav-link ${activeSection === item.lower ? "active" : ""}`}
+              data-num={String(item.num).padStart(2, "0")}
+            >
+              {item.label}
+            </a>
+          ))}
+        </nav>
+
+        <div className="header-social">
+          <button
+            type="button"
+            className="theme-toggle"
+            onClick={toggleTheme}
+            aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}
+          >
+            {theme === "dark" ? <Sun size={17} /> : <Moon size={17} />}
+          </button>
+          <a
+            className="contact-btn"
+            href={profile.resumeUrl}
+            download
+            aria-label="Download resume"
+          >
+            <Download size={16} />
+          </a>
+        </div>
+      </div>
+    </header>
+  );
+}
+
+function ResumeModal({ isOpen, onClose, onToast }) {
+  return (
+    <div className={`resume-modal ${isOpen ? "active" : ""}`}>
+      <div className="content">
+        <div className="modal-header">
+          <div className="title">
+            <Download size={20} className="icon" aria-hidden="true" />
+            <span className="text">Download Resume</span>
+          </div>
+          <button
+            type="button"
+            className="close-btn"
+            onClick={onClose}
+            aria-label="Close"
+          >
+            <X size={18} />
+          </button>
+        </div>
+        <div className="modal-body">
+          <div className="file-info">
+            <div className="name">
+              {profile.name} — Resume
+            </div>
+            <div className="meta">PDF · ~120 KB</div>
+            <div className="status">Ready for download</div>
+          </div>
+          <p>
+            Download my full resume (PDF) covering work history, projects,
+            and certifications.
+          </p>
+        </div>
+        <div className="modal-footer">
+          <button type="button" className="btn-dismiss" onClick={onClose}>
+            Cancel
+          </button>
+          <a
+            href={profile.resumeUrl}
+            download
+            className="btn-download"
+            onClick={() => {
+              onToast("Resume download started");
+              onClose();
+            }}
+          >
+            <Download size={12} aria-hidden="true" />
+            Download
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function Toast({ toasts }) {
+  if (toasts.length === 0) return null;
+
+  return (
+    <div className="toast-container" role="status" aria-live="polite">
+      {toasts.map((toast) => (
+        <motion.div
+          key={toast.id}
+          className="toast"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 10 }}
+          transition={{ duration: 0.2 }}
+        >
+          <Check size={14} className="icon" aria-hidden="true" />
+          {toast.message}
+        </motion.div>
+      ))}
+    </div>
+  );
+}
+
+function App() {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("hero");
+  const [showAll, setShowAll] = useState(false);
+  const [activeFilter, setActiveFilter] = useState("all");
+  const [showResumeModal, setShowResumeModal] = useState(false);
+  const [theme, toggleTheme] = useTheme();
+  const { toasts, addToast, removeToast } = useToast();
+
+  const navRef = useRef(null);
+  const linkRefs = useRef({});
+  const [indicatorStyle, setIndicatorStyle] = useState({
+    x: 0,
+    y: 0,
+    width: 0,
+    opacity: 0,
+  });
+
+  const { scrollYProgress } = useScroll();
+  const progressScaleX = useSpring(
+    scrollYProgress,
+    interactions.scrollProgress
+  );
+
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { rootMargin: "-50% 0px -50% 0px", threshold: 0 }
+    );
+
+    document
+      .querySelectorAll("section[id]")
+      .forEach((section) => observer.observe(section));
+
+    return () => observer.disconnect();
+  }, []);
+
+  useLayoutEffect(() => {
+    const activeEl = linkRefs.current[activeSection];
+    if (!activeEl) {
+      setIndicatorStyle((prev) => ({ ...prev, opacity: 0 }));
+      return;
+    }
+    const navRect = navRef.current?.getBoundingClientRect();
+    if (!navRect) return;
+    const linkRect = activeEl.getBoundingClientRect();
+    setIndicatorStyle({
+      x: linkRect.left - navRect.left,
+      y: linkRect.bottom - navRect.top - 2,
+      width: linkRect.width,
+      opacity: 1,
+    });
+  }, [activeSection]);
+
+  const filteredStudies = caseStudies.filter((study) => {
+    if (activeFilter === "all") return true;
+    return study.category === activeFilter;
+  });
+
+  const visibleStudies = showAll
+    ? filteredStudies
+    : filteredStudies.slice(0, 6);
+
+  return (
+    <>
+      <motion.div
+        className="scroll-progress"
+        style={{ scaleX: progressScaleX }}
+        aria-hidden="true"
+      />
+
+      <a className="skip-link" href="#case-studies">
+        Skip to projects
+      </a>
+
+      <DiagnosticTicker />
+
+      <Header
+        activeSection={activeSection}
+        linkRefs={linkRefs}
+        navRef={navRef}
+        indicatorStyle={indicatorStyle}
+        theme={theme}
+        toggleTheme={toggleTheme}
+        isScrolled={isScrolled}
+      />
+
+      <main>
+        <Hero />
+
+        <motion.section
+          id="case-studies"
+          className="case-studies section-shell"
+          variants={animations.fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
+        >
+          <div className="inner">
+            <SectionHeader
+              index={1}
+              label="Case Studies"
+              title="Selected Work"
+              description="Production systems I've built or led end-to-end."
+            />
+
+            <FilterToolbar
+              activeFilter={activeFilter}
+              setActiveFilter={setActiveFilter}
+              showAll={showAll}
+              setShowAll={setShowAll}
+              total={filteredStudies.length}
+            />
+
+            <motion.div
+              className="project-grid"
+              variants={animations.stagger}
+              initial="hidden"
+              whileInView="visible"
+              viewport={viewport}
+            >
+              {visibleStudies.map((study) => (
+                <CaseStudyCard key={study.id} study={study} />
+              ))}
+            </motion.div>
+          </div>
+        </motion.section>
+
+        <motion.section
+          id="architecture"
+          className="section-shell"
+          variants={animations.fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
+        >
+          <div className="container">
+            <SectionHeader
+              index={2}
+              label="Architecture"
+              title="Systems & Pipeline"
+              description="Live operational traces and production architecture."
+            />
+            <ArchitecturePanel />
+          </div>
+        </motion.section>
+
+        <CapabilitiesSection />
+
+        <ExperienceSection />
+
+        <PhilosophySection />
+
+        <ContactSection onToast={addToast} />
+      </main>
+
+      <footer className="site-footer">
+        <div className="inner">
+          <div className="left">
+            <p className="copyright">© 2026 {profile.name}</p>
+            <span className="meta">{footerNote}</span>
+          </div>
+          <div className="right">
+            <a
+              href={profile.githubUrl}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="GitHub"
+            >
+              <Github size={14} className="icon" />
+            </a>
+            <span className="separator">·</span>
+            <a
+              href={profile.linkedinUrl}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="LinkedIn"
+            >
+              <Linkedin size={14} className="icon" />
+            </a>
+            <span className="separator">·</span>
+            <span className="status">Online</span>
+          </div>
+        </div>
+      </footer>
+
+      <ResumeModal
+        isOpen={showResumeModal}
+        onClose={() => setShowResumeModal(false)}
+        onToast={addToast}
+      />
+
+      <Toast toasts={toasts} />
+    </>
+  );
+}
+
+export default App;
