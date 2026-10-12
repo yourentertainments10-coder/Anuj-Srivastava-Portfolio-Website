@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" role="img" aria-labelledby="title desc">
+  <title id="title">ProcureHub placeholder</title>
+  <desc id="desc">Temporary placeholder representing a procurement workflow automation system.</desc>
+  <rect width="1200" height="750" fill="#f4f7f5"/>
+  <rect x="48" y="42" width="1104" height="666" rx="24" fill="#ffffff" stroke="#cbded2" stroke-width="3"/>
+  <text x="88" y="112" fill="#173b2b" font-family="Arial, sans-serif" font-size="38" font-weight="700">PROCUREHUB</text>
+  <text x="88" y="154" fill="#61776b" font-family="Arial, sans-serif" font-size="22">Procurement workflow automation</text>
+  <circle cx="1050" cy="100" r="18" fill="#36a269"/>
+  <text x="88" y="224" fill="#426254" font-family="Arial, sans-serif" font-size="18" font-weight="700">WORKFLOW</text>
+  <line x1="160" y1="334" x2="1018" y2="334" stroke="#b8d5c2" stroke-width="8"/>
+  <g fill="#ffffff" stroke="#36a269" stroke-width="5">
+    <circle cx="160" cy="334" r="42"/><circle cx="430" cy="334" r="42"/><circle cx="700" cy="334" r="42"/><circle cx="1018" cy="334" r="42"/>
+  </g>
+  <g fill="#173b2b" font-family="Arial, sans-serif" font-size="20" text-anchor="middle">
+    <text x="160" y="442">WhatsApp</text><text x="430" y="442">OCR &amp; parse</text><text x="700" y="442">PostgreSQL</text><text x="1018" y="442">Purchase order</text>
+  </g>
+  <g fill="#36a269" font-family="Arial, sans-serif" font-size="30" font-weight="700" text-anchor="middle">
+    <text x="160" y="344">1</text><text x="430" y="344">2</text><text x="700" y="344">3</text><text x="1018" y="344">4</text>
+  </g>
+  <text x="88" y="610" fill="#7a8d81" font-family="Arial, sans-serif" font-size="18">Temporary portfolio placeholder — replace with a sanitized workflow screenshot.</text>
+</svg>

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" role="img" aria-labelledby="title desc">
+  <title id="title">ResearchFlow placeholder</title>
+  <desc id="desc">Temporary placeholder representing a sports research and analytics dashboard.</desc>
+  <rect width="1200" height="750" fill="#eef4ff"/>
+  <rect x="48" y="42" width="1104" height="666" rx="24" fill="#ffffff" stroke="#c7d7f5" stroke-width="3"/>
+  <text x="88" y="112" fill="#14213d" font-family="Arial, sans-serif" font-size="38" font-weight="700">RESEARCHFLOW</text>
+  <text x="88" y="154" fill="#5b6b88" font-family="Arial, sans-serif" font-size="22">Sports research &amp; analytics dashboard</text>
+  <rect x="88" y="208" width="1024" height="116" rx="14" fill="#f4f7fc"/>
+  <rect x="112" y="234" width="210" height="54" rx="10" fill="#2f6fed"/>
+  <text x="217" y="269" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="22" font-weight="700">OVERVIEW</text>
+  <text x="390" y="269" fill="#5b6b88" font-family="Arial, sans-serif" font-size="21">Countries</text>
+  <text x="540" y="269" fill="#5b6b88" font-family="Arial, sans-serif" font-size="21">Sports</text>
+  <text x="650" y="269" fill="#5b6b88" font-family="Arial, sans-serif" font-size="21">Timeline</text>
+  <text x="790" y="269" fill="#5b6b88" font-family="Arial, sans-serif" font-size="21">Data Explorer</text>
+  <rect x="88" y="370" width="310" height="190" rx="16" fill="#14213d"/>
+  <text x="118" y="430" fill="#9fc1ff" font-family="Arial, sans-serif" font-size="18">VERIFIED DATASET</text>
+  <text x="118" y="492" fill="#ffffff" font-family="Arial, sans-serif" font-size="46" font-weight="700">1,568</text>
+  <text x="118" y="530" fill="#cbd7ef" font-family="Arial, sans-serif" font-size="20">placings processed</text>
+  <rect x="432" y="370" width="310" height="190" rx="16" fill="#e8f1ff"/>
+  <text x="462" y="430" fill="#3764a8" font-family="Arial, sans-serif" font-size="18">EVENT COVERAGE</text>
+  <text x="462" y="492" fill="#14213d" font-family="Arial, sans-serif" font-size="46" font-weight="700">469</text>
+  <text x="462" y="530" fill="#5b6b88" font-family="Arial, sans-serif" font-size="20">distinct events</text>
+  <rect x="776" y="370" width="336" height="190" rx="16" fill="#eff9f2"/>
+  <text x="806" y="430" fill="#2d7a4b" font-family="Arial, sans-serif" font-size="18">RECONCILIATION</text>
+  <text x="806" y="492" fill="#1e6b3d" font-family="Arial, sans-serif" font-size="46" font-weight="700">0</text>
+  <text x="806" y="530" fill="#4f765e" font-family="Arial, sans-serif" font-size="20">mismatches</text>
+  <text x="88" y="645" fill="#7a8aa5" font-family="Arial, sans-serif" font-size="18">Temporary portfolio placeholder — replace with a genuine screenshot.</text>
+</svg>

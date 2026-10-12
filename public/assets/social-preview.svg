@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Anuj Srivastava portfolio</title>
+  <desc id="desc">Backend and applied AI developer portfolio preview.</desc>
+  <rect width="1200" height="630" fill="#080b10"/>
+  <circle cx="1000" cy="80" r="260" fill="#123d3a" opacity=".7"/>
+  <circle cx="1090" cy="570" r="220" fill="#0e2528" opacity=".8"/>
+  <rect x="72" y="72" width="1056" height="486" rx="28" fill="#0e1319" stroke="#2dd4bf" stroke-opacity=".35" stroke-width="2"/>
+  <text x="126" y="188" fill="#2dd4bf" font-family="Arial, sans-serif" font-size="25" font-weight="700" letter-spacing="5">ANUJ SRIVASTAVA</text>
+  <text x="126" y="286" fill="#e8eef2" font-family="Arial, sans-serif" font-size="66" font-weight="800">Backend &amp; Applied AI</text>
+  <text x="126" y="356" fill="#e8eef2" font-family="Arial, sans-serif" font-size="66" font-weight="800">Developer</text>
+  <text x="126" y="438" fill="#93a3b0" font-family="Arial, sans-serif" font-size="26">Python · automation · computer vision · analytics</text>
+  <rect x="126" y="484" width="178" height="5" rx="3" fill="#2dd4bf"/>
+</svg>

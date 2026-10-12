@@ -349,7 +349,7 @@ function App() {
                 whileHover={
                   prefersReducedMotion
                     ? undefined
-                    : { y: -8, transition: { duration: 0.3, ease: [0.4, 0, 0.2, 1] } }
+                    : { y: -4, transition: { duration: 0.2, ease: [0.4, 0, 0.2, 1] } }
                 }
               >
                 <ProjectMedia project={project} />
@@ -564,10 +564,16 @@ function App() {
               <ul>
                 {certifications.map((cert) => (
                   <li key={cert.name}>
-                    <a href={cert.credentialUrl} target="_blank" rel="noreferrer">
-                      {cert.name} — {cert.issuer}
-                      <ArrowUpRight size={14} aria-hidden="true" />
-                    </a>
+                    {cert.credentialUrl ? (
+                      <a href={cert.credentialUrl} target="_blank" rel="noreferrer">
+                        {cert.name} — {cert.issuer}
+                        <ArrowUpRight size={14} aria-hidden="true" />
+                      </a>
+                    ) : (
+                      <span>
+                        {cert.name} — {cert.issuer}
+                      </span>
+                    )}
                   </li>
                 ))}
               </ul>

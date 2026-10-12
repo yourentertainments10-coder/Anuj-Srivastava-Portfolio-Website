@@ -41,14 +41,14 @@ export const projects = [
     oneLiner:
       "Competition-agnostic sports research platform for ingesting, validating, and analysing historical results.",
     story:
-      "ResearchFlow turns fragmented sports records into a queryable analytical dataset. I worked on the ingestion and normalization pipeline, strict validation, relational database design, and reporting workflow so event, sport, and placing records can be reconciled consistently. The repository currently documents 1,568 placings across 469 distinct events and 49 sports; these figures are dataset-level project evidence, not a production usage claim.",
+      "ResearchFlow turns fragmented sports records into a queryable analytical dataset. I worked on the ingestion and normalization pipeline, strict validation, relational database design, and reporting workflow so event, sport, and placing records can be reconciled consistently. Its current Asian Games dataset contains 1,568 placings across 469 distinct events and 49 sports.",
     metrics: [
       { value: "1,568", label: "placings in dataset" },
       { value: "469", label: "distinct events" },
       { value: "49", label: "sports represented" },
     ],
     stack: ["Python", "FastAPI", "PostgreSQL", "React", "Pytest"],
-    media: null,
+    media: { type: "image", src: "/assets/researchflow.svg" },
     repoUrl: "https://github.com/yourentertainments10-coder/ResearchFlow",
     liveUrl: "https://researchflow.yourentertainments10.workers.dev/",
   },
@@ -61,13 +61,8 @@ export const projects = [
       "WhatsApp- and email-driven procurement workflow for vendor stock, customer orders, and purchase processing.",
     story:
       "Vendor stock lists, customer orders, and invoices arrive as photos, PDFs, and messages over WhatsApp and Gmail. I built the backend workflow that parses and validates incoming data, stores it in PostgreSQL, allocates orders against vendor stock, and supports purchase-order and invoice workflows. The core procurement and vendor-order features are in daily use by the company; automated vendor bidding remains under validation and is not presented as complete.",
-    metrics: [
-      { value: "48", label: "API endpoints" },
-      { value: "24", label: "database tables" },
-      { value: "Daily", label: "core workflow use" },
-    ],
     stack: ["Python", "FastAPI", "React", "PostgreSQL", "WhatsApp API", "Gmail API", "OCR"],
-    media: null,
+    media: { type: "image", src: "/assets/procurehub.svg" },
     repoUrl: null,
     liveUrl: null,
   },
@@ -80,13 +75,8 @@ export const projects = [
       "Sales pipeline and workflow automation platform for an auto-accessories retailer.",
     story:
       "Leads lived in personal WhatsApp chats, tasks were verbal, and nothing was tracked. OpsFlow gives six roles a single system: a kanban lead pipeline with round-robin auto-assignment, recurring tasks and reminders, a notice board, and a form builder whose public share links turn a customer submission straight into an assigned lead and a follow-up task.",
-    metrics: [
-      { value: "133", label: "API tests passing" },
-      { value: "6", label: "permission roles" },
-      { value: "9", label: "feature modules" },
-    ],
     stack: ["Python", "Django REST", "React", "PostgreSQL", "JWT", "Claude API"],
-    media: null,
+    media: { type: "image", src: "/assets/opsflow.svg" },
     repoUrl: null,
     liveUrl: null,
   },
@@ -99,12 +89,8 @@ export const projects = [
       "Beat-aligned short-video generation proof of concept built with Python, librosa, and FFmpeg.",
     story:
       "Beat Flash analyses an audio track for beat and onset timing, maps those timestamps to source footage, and uses FFmpeg to render a sequence of timed cuts. I built the Python pipeline and explored its behaviour on different audio and video inputs. It is a proof of concept: beat detection and rendering work for tested inputs, while complex rhythms and production-grade editing controls remain limitations.",
-    metrics: [
-      { value: "POC", label: "implementation status" },
-      { value: "2", label: "core pipeline stages" },
-    ],
     stack: ["Python", "librosa", "FFmpeg", "NumPy"],
-    media: null,
+    media: { type: "image", src: "/assets/beat-flash.svg" },
     repoUrl: "https://github.com/yourentertainments10-coder/Video-Editor",
     liveUrl: null,
   },
@@ -208,11 +194,11 @@ export const projects = [
 export const skillGroups = [
   {
     title: "Programming",
-    items: ["Python", "JavaScript", "SQL", "HTML & CSS"],
+    items: ["Python", "SQL"],
   },
   {
     title: "Backend",
-    items: ["React", "FastAPI", "Django REST", "Flask", "Node.js / Express"],
+    items: ["FastAPI", "Django REST", "Flask", "Node.js / Express"],
   },
   {
     title: "AI / ML",
@@ -244,19 +230,13 @@ export const skillGroups = [
 
 export const experience = [
   {
-    role: "Full Stack Development Intern",
-    company: "CodeAlpha",
-    period: "20 Jun — 20 Jul 2026",
-    details: [
-      "Completed a full-stack development internship; exact deliverables should be added from the internship completion record before being presented as specific claims.",
-    ],
-  },
-  {
     role: "Full Stack Developer",
     company: "CarTrends, Delhi",
-    period: "2026 — Present",
+    period: "2026 — 21 Sep 2026",
     details: [
-      "Sole developer of the company's internal software: a procurement-automation system and a sales-and-operations platform, both in daily production use by the operations team.",
+      "Built and tested internal automation across company portals and operational workflows, including backend integrations and database-backed processes.",
+      "Developed ProcureHub/AutoFlow workflows for WhatsApp stock updates, customer order intake, OCR-assisted photo extraction, vendor responses, purchase orders, and PostgreSQL integration.",
+      "Worked on deployment and debugging of the implemented workflows while keeping incomplete automation separate from production-ready features.",
     ],
   },
   {
@@ -280,7 +260,7 @@ export const experience = [
 export const education = {
   degree: "Bachelor of Computer Applications",
   institution: "Delhi Skill & Entrepreneurship University, Dwarka",
-  period: "2023 — 2026 · Degree status to be confirmed",
+  period: "2023 — 2026",
 };
 
 export const certifications = [
@@ -321,7 +301,7 @@ export const about = {
   photoAlt: "Anuj Srivastava",
   content: [
     "I'm a software developer focused on building practical software systems, AI-powered applications, and data-driven tools. My work spans backend development, Python, workflow automation, computer vision, and analytics.",
-    "I enjoy taking a problem from research and system design through implementation, testing, and deployment. Projects such as ResearchFlow, ProcureHub, Beat Flash, and AI Smart Classroom have helped me explore reliable data pipelines, useful automation, and clear data insights without overstating what is still a prototype.",
+    "I enjoy taking a problem from research and system design through implementation, testing, and deployment. Projects such as ResearchFlow, ProcureHub, Beat Flash, and AI Smart Classroom have helped me explore reliable data pipelines, useful automation, and clear data insights.",
     "Outside of code, I shoot photos, served as vice-president of my university's photography society, tutor school students at an academy I co-founded, and build chess software to deepen my understanding of game logic.",
   ],
   // Compact fact row under the About text. Keep to 3-4 items.

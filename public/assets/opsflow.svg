@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" role="img" aria-labelledby="title desc">
+  <title id="title">OpsFlow placeholder</title>
+  <desc id="desc">Temporary placeholder representing an internal sales and operations workflow platform.</desc>
+  <rect width="1200" height="750" fill="#f7f5ef"/>
+  <rect x="48" y="42" width="1104" height="666" rx="24" fill="#ffffff" stroke="#e1d7bd" stroke-width="3"/>
+  <text x="88" y="112" fill="#332d22" font-family="Arial, sans-serif" font-size="40" font-weight="700">OPSFLOW</text>
+  <text x="88" y="154" fill="#857967" font-family="Arial, sans-serif" font-size="22">Sales pipeline &amp; internal operations</text>
+  <g font-family="Arial, sans-serif">
+    <rect x="88" y="220" width="230" height="340" rx="14" fill="#f5f0e5"/>
+    <rect x="338" y="220" width="230" height="340" rx="14" fill="#f0f4f8"/>
+    <rect x="588" y="220" width="230" height="340" rx="14" fill="#eef5ef"/>
+    <rect x="838" y="220" width="230" height="340" rx="14" fill="#f6eff4"/>
+    <text x="116" y="260" fill="#6d5b3f" font-size="19" font-weight="700">NEW LEADS</text>
+    <text x="366" y="260" fill="#526a82" font-size="19" font-weight="700">IN PROGRESS</text>
+    <text x="616" y="260" fill="#52755a" font-size="19" font-weight="700">FOLLOW-UP</text>
+    <text x="866" y="260" fill="#795f72" font-size="19" font-weight="700">COMPLETED</text>
+    <g fill="#ffffff" stroke="#d9cdb4" stroke-width="2">
+      <rect x="112" y="292" width="182" height="68" rx="9"/><rect x="112" y="378" width="182" height="68" rx="9"/>
+      <rect x="362" y="292" width="182" height="68" rx="9"/><rect x="612" y="292" width="182" height="68" rx="9"/>
+      <rect x="862" y="292" width="182" height="68" rx="9"/>
+    </g>
+    <g fill="#6d6255" font-size="18"><text x="132" y="333">Lead intake</text><text x="132" y="419">Customer form</text><text x="382" y="333">Assigned task</text><text x="632" y="333">Reminder</text><text x="882" y="333">Closed work</text></g>
+  </g>
+  <text x="88" y="625" fill="#958a78" font-family="Arial, sans-serif" font-size="18">Temporary portfolio placeholder — replace with a sanitized platform screenshot.</text>
+</svg>
