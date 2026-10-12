@@ -60,7 +60,7 @@ export const projects = [
     oneLiner:
       "WhatsApp- and email-driven procurement workflow for vendor stock, customer orders, and purchase processing.",
     story:
-      "Built procurement workflows for vendor stock updates, customer order intake, OCR-assisted order parsing, and purchase-order preparation. Automated vendor bidding is in testing.",
+      "Built and integrated procurement workflows for vendor stock updates, customer order intake, OCR-assisted photo-order processing, vendor responses, and purchase-order preparation. The implemented procurement and vendor-order workflows are used daily by the company through a PostgreSQL-backed backend; automated vendor bidding is in testing.",
     stack: ["Python", "FastAPI", "React", "PostgreSQL", "WhatsApp API", "Gmail API", "OCR"],
     media: { type: "image", src: "/assets/procurehub.svg" },
     repoUrl: null,
@@ -152,26 +152,6 @@ export const projects = [
   },
   {
     featured: false,
-    title: "E-Commerce Store",
-    tag: "Web App",
-    note: null,
-    oneLiner:
-      "Full-stack store with authentication, product catalog, cart, and order management.",
-    stack: ["Python", "Django", "SQLite"],
-    repoUrl: "https://github.com/yourentertainments10-coder/CodeAlpha_Ecommerce",
-  },
-  {
-    featured: false,
-    title: "Movie Recommendation System",
-    tag: "Machine Learning",
-    note: null,
-    oneLiner:
-      "Content-based recommender that surfaces similar films from a vectorised feature set.",
-    stack: ["Python", "Scikit-learn", "Streamlit"],
-    repoUrl: "https://github.com/yourentertainments10-coder/Movie_recommender",
-  },
-  {
-    featured: false,
     title: "Fake Job Posting Detection",
     tag: "Machine Learning",
     note: null,
@@ -180,20 +160,11 @@ export const projects = [
     stack: ["Python", "Scikit-learn", "Pandas"],
     repoUrl: null,
   },
-  {
-    featured: false,
-    title: "Spam Email Classifier",
-    tag: "Machine Learning",
-    note: null,
-    oneLiner: "Text-classification model separating spam from legitimate mail.",
-    stack: ["Python", "Scikit-learn"],
-    repoUrl: null,
-  },
 ];
 
 export const skillGroups = [
   {
-    title: "Programming",
+    title: "Languages",
     items: ["Python", "JavaScript", "SQL"],
   },
   {
@@ -203,77 +174,46 @@ export const skillGroups = [
       "Express.js",
       "FastAPI",
       "Flask",
-      "Django / Django REST",
-      "REST API integration",
-      "API authentication & webhooks",
-    ],
-  },
-  {
-    title: "Workflow Automation",
-    items: [
-      "WhatsApp Business Cloud API",
-      "Customer & vendor messaging",
-      "Order-processing workflows",
-      "Purchase-order preparation",
-      "OCR-assisted processing",
-      "Data extraction & normalization",
-      "Spreadsheet imports",
-      "Validation & deduplication",
-      "Conversation-state handling",
+      "Django",
+      "REST APIs",
     ],
   },
   {
     title: "AI / ML",
     items: [
       "OpenCV",
-      "YOLOv8 / Ultralytics",
+      "YOLOv8",
       "MediaPipe",
-      "Face recognition",
-      "Computer vision",
-      "Object & engagement detection",
+      "face-recognition",
       "Scikit-learn",
     ],
   },
   {
-    title: "Data Engineering & Analytics",
+    title: "Data",
     items: [
       "Pandas",
       "NumPy",
-      "Data cleaning & transformation",
-      "Relational database design",
-      "SQL analytics",
-      "CSV/XLSX processing",
-      "Data validation & quality checks",
-      "Automated reports",
-      "Alembic migrations",
+      "PostgreSQL",
+      "MySQL",
+      "SQLite",
+      "Alembic",
     ],
-  },
-  {
-    title: "Databases",
-    items: ["PostgreSQL", "MySQL", "SQLite"],
   },
   {
     title: "Frontend",
-    items: ["React", "HTML", "CSS", "Vite", "Responsive UI development"],
+    items: ["React", "HTML", "CSS", "Vite"],
   },
   {
-    title: "Video & Media Automation",
+    title: "Tools / DevOps",
     items: [
+      "Git",
+      "GitHub",
+      "Docker",
+      "Docker Compose",
+      "Vercel",
+      "WhatsApp Business Cloud API",
       "FFmpeg",
       "librosa",
-      "Audio analysis & beat detection",
-      "Beat-aligned editing",
-      "Automated video rendering",
-    ],
-  },
-  {
-    title: "Tools & Deployment",
-    items: [
-      "Git & GitHub",
-      "Docker / Compose",
-      "Cloudflare",
-      "Vercel",
-      "HTTPS & webhook deployment",
     ],
   },
 ];
@@ -282,7 +222,7 @@ export const experience = [
   {
     role: "Full Stack Developer",
     company: "CarTrends, Delhi",
-    period: "2026 — 21 Sep 2026",
+    period: "July 2026 – August 2026",
     details: [
       "Built and tested internal automation across company portals and operational workflows, including backend integrations and database-backed processes.",
       "Developed ProcureHub/AutoFlow workflows for WhatsApp stock updates, customer order intake, OCR-assisted photo extraction, vendor responses, purchase orders, and PostgreSQL integration.",
